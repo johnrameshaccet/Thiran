@@ -83,8 +83,8 @@
                <br>
                <div class="col-md-4">
 <div class="f-button-container">
-    <div class="fb-button d_signin_btn" id="btn_signin_fb"><i class="fa fa-facebook"></i>Sign in with facebook</div><br><br>
-<div class="google-button d_signin_btn" id="btn_signin_google"><i class="fa fa-google"></i>Sign in with google</div>
+    <div class="fb-button d_signin_btn" id="btn_signin_fb"><a style="text-decoration: none;color:#FFF;" href="social/session/facebook"><i class="fa fa-facebook"></i>Sign in with facebook</a></div><br><br>
+    <div class="google-button d_signin_btn" id="btn_signin_google"><a style="text-decoration: none;color:#FFF;" href="social/session/google"><i class="fa fa-google-plus"></i>Sign in with google</a></div>
 </div>	
             
            </div>

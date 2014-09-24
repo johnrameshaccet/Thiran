@@ -96,7 +96,8 @@ class Social extends CI_Controller {
 
 			redirect('welcome');
 		}else{
-			$this->load->view('pages/social_signup');
+                     $data['title']="Thiran | User signup";
+			$this->load->view('pages/social_signup',$data);
 		}
 	}
 
