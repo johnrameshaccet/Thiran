@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thiran</title>
+    <title><?php echo $title ?></title>
         
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo asset_url();?>css/bootstrap.min.css" rel="stylesheet">
@@ -19,17 +19,8 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo asset_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -55,36 +46,36 @@
     <div class="col-xs-12 well text-center">
 <form id="signup_t" name="signup_t" method="post">
 								<div class="form-group">
-                                                                    <label for="first_name" style="color: black">First Name <span id="fname"></span></label>
-									<input type="text" class="form-control" required oninvalid="this.setCustomValidity('Enter firstname Here')" oninput="setCustomValidity('')" name="first_name" id="first_name" />
+                                                                    <label for="first_name" style="color: black">First Name</label>
+									<input type="text" class="form-control" name="first_name" onBlur="isAlphapet_f()" id="first_name" /><span id="fname"></span>
 								</div>
 								<div class="form-group">
-                                                                <label for="last_name" style="color: black">Last Name <span id="lname"></span></label>
+                                                                <label for="last_name" style="color: black">Last Name</label>
 								
-									<input type="text" class="form-control" required oninvalid="this.setCustomValidity('Enter lastname Here')" oninput="setCustomValidity('')" name="last_name" id="last_name" />
+									<input type="text" class="form-control" name="last_name" onBlur="isAlphapet_l()" id="last_name" /><span id="lname"></span>
 								</div>
                                                       
-							        <div class="form-group"><label for="email" style="color: black">Email <span id="email_id"></span></label>
+							        <div class="form-group"><label for="email" style="color: black">Email</label>
 								
-                                                                    <input type="email" class="form-control" required oninvalid="this.setCustomValidity('Enter email Here')" oninput="setCustomValidity('')" name="email" id="email" />
+                                                                    <input type="email" class="form-control" onblur="emailvalid()" name="email" id="email" /><span id="email_id"></span>
 								</div>
 								
                                                             
-                                                               <div class="form-group">  <label for="password" style="color: black">Password <span id="pswd"></span></label>
+                                                               <div class="form-group">  <label for="password" style="color: black">Password</label>
 								
-                                                                    <input type="password" class="form-control" required oninvalid="this.setCustomValidity('Enter passwd Here')" oninput="setCustomValidity('')" name="password" id="password" />
+                                                                    <input type="password" class="form-control" name="password" onBlur='passwd()' id="password" /> <span id="pswd"></span>
 								</div> 
-                                                           <div class="form-group">       <label for="conf_password" style="color: black">Confirm Password <span id="cfpswd"></span></label>
+                                                           <div class="form-group">       <label for="conf_password" style="color: black">Confirm Password</label>
 								
-                                                                    <input type="password" class="form-control" required oninvalid="this.setCustomValidity('Enter confirm passwd Here')" oninput="setCustomValidity('')" name="conf_password" id="conf_password" />
+                                                                    <input type="password" class="form-control" name="conf_password" onBlur='pass()' id="conf_password" /><span id="cfpswd"></span>
 								</div>
-								   <div class="form-group"> <label for="phone_no" style="color: black">Mobile <span id="mobile"></span></label>
+								   <div class="form-group"> <label for="phone_no" style="color: black">Mobile</label>
 								
-                                                                    <input type="text" class="form-control" required oninvalid="this.setCustomValidity('Enter year of phone no Here')" oninput="setCustomValidity('')" name="phone_no" id="phone_no" />
+                                                                    <input type="text" class="form-control" name="phone_no" id="phone_no" /> <span id="mobile"></span>
 							</div>
 								<div class="form-group"> <label for="user_type" style="color: black">User type</label>
 								
-                                                      <select id="user_type" required oninvalid="this.setCustomValidity('Pick one Here')" oninput="setCustomValidity('')"  name="user_type" class="form-control" onChange='checkForPassOut(this)'>
+                                                      <select id="user_type" name="user_type" class="form-control" onChange='checkForPassOut(this)'>
                                                                 <option value="0">Select-one</option>
                                                                 <option value="AL010">Alumni</option>
                                                                 <option value="ST010">Student</option>
@@ -128,51 +119,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo asset_url();?>js/bootstrap.min.js"></script>
-
-          <script>
-$(document).ready(function() {
-        
- 
-$('#register_submit').click(function(e){
-  e.preventDefault();
- 
-  $.ajax({
-    url:"<?php echo base_url()?>welcome/signup",
-    type:"post",
-    data: $('#signup_t').serialize(),
-    dataType: "json",
-    success: function(result){
-        $('#fname').html(result.first_name);
-        $('#lname').html(result.last_name);
-        $('#email_id').html(result.email);
-        $('#pswd').html(result.password);
-        $('#cfpswd').html(result.conf_password);
-        $('#mobile').html(result.phone_no);
-        
-    }
-  });
-});
-
-
-});
-function checkForPassOut(node){
-    if(node.value !== "RE010" && node.value !== "0" ){
-        $("#div_ypassout")[0].style.display = "block";
-        $("#div_college")[0].style.display = "block";
-         $("#div_company")[0].style.display = "none";
-    }
-    else if(node.value==="RE010"){
-        $("#div_company")[0].style.display = "block";
-        $("#div_ypassout")[0].style.display = "none";
-        $("#div_college")[0].style.display = "none";
-    }
-    else if(node.value==="0"){
-        $("#div_company")[0].style.display = "none";
-        $("#div_ypassout")[0].style.display = "none";
-        $("#div_college")[0].style.display = "none";
-    }
-}
-</script>
+ <script src="<?php echo asset_url();?>js/signup.js"></script>
+          
       <script src="<?php echo asset_url();?>js/classie.js"></script>
     <script src="<?php echo asset_url();?>js/cbpAnimatedHeader.js"></script>
 

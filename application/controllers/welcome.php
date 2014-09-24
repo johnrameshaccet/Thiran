@@ -10,11 +10,13 @@ class Welcome extends CI_Controller
                     $this->load->view('template');
                 }
                 else{
-			$this->load->view('startup');
+                    $data['title']="Thiran | Home";
+			$this->load->view('startup',$data);
                 }
 	}
         public function login_t()
         {
+             $data['title']="Thiran | User login";
 $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 $this->form_validation->set_rules('password', 'Password', 'required');
 if ($this->form_validation->run()!= FALSE)
@@ -43,12 +45,13 @@ if ($this->form_validation->run()!= FALSE)
             }
                 }
                else {
-                    $this->load->view('pages/user_login');
+                    $this->load->view('pages/user_login',$data);
                 }
         }
         public function signup_t()
         {
-            $this->load->view('pages/user_signup');
+             $data['title']="Thiran | User signup";
+            $this->load->view('pages/user_signup',$data);
         }
 
         public function signup()
@@ -62,8 +65,6 @@ $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|i
 $this->form_validation->set_rules('phone_no', 'Phone no', 'trim|required|is_natural|min_length[10]');
 if ($this->form_validation->run()!= FALSE)
 		{
-            if($this->input->post('signup')!='')
-            {
             $this->load->model('user_model');
 			//NOTE: form validation to come up here
 
@@ -71,7 +72,7 @@ if ($this->form_validation->run()!= FALSE)
 			$signup = $this->user_model->signup_t(array(
                                 'first_name' => $this->input->post('first_name'),
                                 'last_name' => $this->input->post('last_name'),
-				'email' => $this->input->post('email_id'),
+				'email' => $this->input->post('email'),
                                 'password' => $this->input->post('password'),
                                 'college_id' => $this->input->post('college_id'),
 				'phone_no' => $this->input->post('phone_no'),
@@ -83,9 +84,9 @@ if ($this->form_validation->run()!= FALSE)
 			));
                         if($signup)
                         {
-                            redirect('welcome');
+                           $data['status']="success";
+                            echo json_encode($data);
                         }
-        }
         } 
  else {
     $data = array(

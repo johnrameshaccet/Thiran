@@ -34,7 +34,7 @@ class user_model extends CI_Model {
 		  $id=$row->id;
                    $Range=$row->range_val;
                    $array = json_decode($Range, true);
-                if (($array['from'] >=$id)&&($id<$array['to'])) {
+                if (($array['from']<=$id)&&($id<$array['to'])) {
                    $id=$id+1;
                    
             }
@@ -63,7 +63,7 @@ class user_model extends CI_Model {
                         'uid'=> $this->session->userdata('uid'),
                         'ypassout' => $details['ypassout'],
                         'user_type' => $details['utype'],
-			'photo' => $this->session->userdata('image')
+			'company_name'=> $details['company_name']
                          
 		);
                  $this->session->set_userdata(array(
@@ -123,13 +123,13 @@ class user_model extends CI_Model {
                    global $id;
 		$sql = "SELECT id,range_val from college,users where college.college_id=? order by users.id desc limit 1"; 
 		$query = $this->db->query($sql, $details['college_id']);
-		if ($query->num_rows() > 0)
+                if ($query->num_rows() == 1)
 		{
 		   $row = $query->row();
 		  $id=$row->id;
                    $Range=$row->range_val;
                    $array = json_decode($Range, true);
-                if (($array['from'] >=$id)&&($id<$array['to'])) {
+                if (($array['from'] <=$id)&&($id<$array['to'])) {
                    $id=$id+1;
                    
             }
@@ -157,7 +157,7 @@ class user_model extends CI_Model {
 			'phone_no' => $details['phone_no'],
                         'ypassout' => $details['ypassout'],
                         'user_type' => $details['utype'],
-			'photo' =>''
+			'company_name'=> $details['company_name']
                          
 		);
                 return $this->db->insert('users',$data);
