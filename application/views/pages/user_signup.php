@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $title ?></title>
+    <title>Thiran | User SignUp</title>
         
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo asset_url();?>css/bootstrap.min.css" rel="stylesheet">
@@ -75,11 +75,11 @@
 							</div>
 								<div class="form-group"> <label for="user_type" style="color: black">User type</label>
 								
-                                                      <select id="user_type" name="user_type" class="form-control" onChange='checkForPassOut(this)'>
+                                                      <select id="user_type" name="role" class="form-control" onChange='checkForPassOut(this)'>
                                                                 <option value="0">Select-one</option>
-                                                                <option value="AL010">Alumni</option>
-                                                                <option value="ST010">Student</option>
-                                                                <option value="RE010">Recruiter</option>
+                                                                <option value="AL">Alumni</option>
+                                                                <option value="ST">Student</option>
+                                                                <option value="RE">Recruiter</option>
                                                                  </select>
 								</div>
                               <div id ="div_college"style="display:none" class="form-group"> <label for="college_id" style="color: black">College</label>

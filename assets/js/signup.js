@@ -115,12 +115,12 @@ else if(pawd1.value!=pawdcon2.value){pcalt.innerHTML="";palt.innerHTML="<font co
 
 
 function checkForPassOut(node){
-    if(node.value !== "RE010" && node.value !== "0" ){
+    if(node.value !== "RE" && node.value !== "0" ){
         $("#div_ypassout")[0].style.display = "block";
         $("#div_college")[0].style.display = "block";
          $("#div_company")[0].style.display = "none";
     }
-    else if(node.value==="RE010"){
+    else if(node.value==="RE"){
         $("#div_company")[0].style.display = "block";
         $("#div_ypassout")[0].style.display = "none";
         $("#div_college")[0].style.display = "none";

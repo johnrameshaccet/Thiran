@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $title ?></title>
+    <title>Thiran | User Login</title>
     <style>
         /*--------------------------------------------------------------*/
 
@@ -88,47 +88,48 @@
 	<div class="row">
 <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 login">
     <div class="col-xs-12 well text-center">
-							<!-- Login Image -->
-							<img src="<?php echo asset_url();?>img/user.png" alt="User" class="img-circle" width="150" title="User"/>
-                                                        <br><br>
-							<!-- Login Form -->
-							<form action="#" method="post">
-							
-								<!-- Code for username -->
-								
-								<div class="input-group">
-                                                                   <span class="input-group-btn">
-										<pre class="btn btn-default"><i class="fa fa-user"></i></pre>
-									</span><input placeholder="Email" type="email" class="form-control"  required oninvalid="this.setCustomValidity('Enter email Here')" oninput="setCustomValidity('')"  name="email" id="email" />
-								</div>
-								 <label for="email" class="err"><?php echo form_error('email'); ?></label>
-								<!-- Code for password -->
-								
-                                                                <div class="input-group" style="margin-top: 10px">
-								<span class="input-group-btn">
-										<pre class="btn btn-default"><i class="fa fa-lock"></i></pre>
-									</span><input type="password"  required oninvalid="this.setCustomValidity('Enter password Here')" oninput="setCustomValidity('')"  name="password" id="password" class="form-control" placeholder="Password" />
-									
-								</div>
-								<label for="password" class="err"><?php echo form_error('password'); ?></label>
-								<!-- Login Submit-->
-                                                                <input type="submit" class="btn btn-primary btn-block" name="login" value="Login" />
-							</form>
-							<a href="signup1.html" style="color:#00aced; text-align: center"> Forgot password?</a>
-							<!-- Buttons for social login -->
-							<!-- facebook login -->
-							<button type="button" data-placement="top" title="Login with Facebook" class="btn fa fa-facebook ttip"></button>
-							
-							<!-- google login -->
-							<button type="button" data-placement="top" title="Login with Google" class="btn fa fa-google ttip">&nbsp;</button>
-							
-							<!-- likedin login -->
-							<button type="button" data-placement="top" title="Login with LinkedIn" class="btn fa fa-linkedin ttip">&nbsp;</button>
-							
-							<!-- Signup page link for other's -->
-                                                        <br><span style="color: #222">Don't have account?</span><a href="signup_t" style="color:#00aced"> Signup here</a>
-						</div>
-			
+         <?php echo alert_box(); ?>
+        <!-- Login Image -->
+        <img src="<?php echo asset_url();?>img/user.png" alt="User" class="img-circle" width="150" title="User"/>
+        <br><br>
+        <!-- Login Form -->
+        <form action="login_t" method="post">
+
+                <!-- Code for username -->
+
+                <div class="input-group">
+                   <span class="input-group-btn">
+                                <pre class="btn btn-default"><i class="fa fa-user"></i></pre>
+                        </span><input placeholder="Email" type="email" class="form-control"  required oninvalid="this.setCustomValidity('Enter email Here')" oninput="setCustomValidity('')"  name="email" id="email" />
+                </div>
+                 <label for="email" class="err"><?php echo form_error('email'); ?></label>
+                <!-- Code for password -->
+
+                <div class="input-group" style="margin-top: 10px">
+                <span class="input-group-btn">
+                                <pre class="btn btn-default"><i class="fa fa-lock"></i></pre>
+                        </span><input type="password"  required oninvalid="this.setCustomValidity('Enter password Here')" oninput="setCustomValidity('')"  name="password" id="password" class="form-control" placeholder="Password" />
+
+                </div>
+                <label for="password" class="err"><?php echo form_error('password'); ?></label>
+                <!-- Login Submit-->
+                <input type="submit" class="btn btn-primary btn-block" name="login" value="Login" />
+        </form>
+        <a href="#" style="color:#00aced; text-align: center"> Forgot password?</a>
+        <!-- Buttons for social login -->
+        <!-- facebook login -->
+        <button type="button" data-placement="top" onclick="window.location.href='<?php echo base_url(); ?>social/session/facebook'" title="Login with Facebook" class="btn fa fa-facebook ttip"></button>
+
+        <!-- google login -->
+        <button type="button" data-placement="top" title="Login with Google" onclick="window.location.href='<?php echo base_url(); ?>social/session/google'" class="btn fa fa-google ttip">&nbsp;</button>
+
+        <!-- likedin login -->
+        <button type="button" data-placement="top" title="Login with LinkedIn" class="btn fa fa-linkedin ttip">&nbsp;</button>
+
+        <!-- Signup page link for other's -->
+        <br><span style="color: #222">Don't have account?</span><a href="signup_t" style="color:#00aced"> Signup here</a>
+</div>
+
 	</div>
 </div>
         </div>

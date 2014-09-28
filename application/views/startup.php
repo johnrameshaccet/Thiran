@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $title ?></title>
+    <title>Thiran | Home</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo asset_url();?>css/bootstrap.min.css" rel="stylesheet">
 
@@ -648,7 +648,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo asset_url();?>js/bootstrap.min.js"></script>
-    
+       <!-- Plugin JavaScript -->
+    <script src="<?php echo asset_url();?>js/jquery.easing.min.js"></script>
     <script src="<?php echo asset_url();?>js/classie.js"></script>
     <script src="<?php echo asset_url();?>js/cbpAnimatedHeader.js"></script>
 

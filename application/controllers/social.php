@@ -29,7 +29,7 @@ class Social extends CI_Controller {
         {  
             // By sending no options it'll come back here
             $provider->authorize();
-            redirect('social?error');
+            redirect('welcome');
         }
         else
         {

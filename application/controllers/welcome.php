@@ -2,56 +2,69 @@
 
 class Welcome extends CI_Controller
 {
-	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('User_model', 'users');
+		$this->load->helper('email');
+	}
 	public function index()
 	{
 		//Check if user is logged in
 		if($this->auth->is_logged_in()){
-                    $this->load->view('template');
+                    redirect('home');
                 }
-                else{
-                    $data['title']="Thiran | Home";
-			$this->load->view('startup',$data);
+                else
+                {
+		    $this->mViewFile='startup';
                 }
 	}
         public function login_t()
         {
-             $data['title']="Thiran | User login";
 $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 $this->form_validation->set_rules('password', 'Password', 'required');
 if ($this->form_validation->run()!= FALSE)
 		{
-            if($this->input->post('login')!='')
-            {
-                $this->load->model('user_model');
-                $login= $this->user_model->login_t(array(
-                    $this->input->post('email'),
-                    $this->input->post('password')
-          ));
-                if($login)
-                {
-                    $this->session->set_userdata(array(
-                                        'name'=> $login['first_name']+" "+$login['last_name'],
-                                        'email' =>$login['email'] ,
-                                        'is_logged_in' =>$login['is_logged_in'],
-                                        'ypassout' => $login['ypassout'],
-                                         'user_type' => $login['user_type'],                
-                                         'phone_no' => $login['phone_no'],
-                                         'college_id' => $login['college_id']
-                        
-                        ));
-                        redirect('welcome');
-                }
-            }
+         
+                        $email = $this->input->post('email');
+			$password = $this->input->post('password');
+			$user = $this->users->get_by([
+				'email'		=> $email,
+				'active'	=> 1
+			]);
+                       if ( !empty($user) )
+			{
+             
+				// check password
+				if ( verify_pw($password, $user['password']) )
+				{
+					// limited fields to store in session
+					$fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id');
+					$user_data = elements($fields, $user);
+					login_user($user_data);
+
+					// success
+					set_alert('success', 'Login success.');
+					redirect('home');
+					exit;
+				}
+                                 else {
+                    set_alert('danger','password doesn\'t match with your account.');
+                    redirect('welcome/login_t');
+                           } 
+			}
+                      else {
+                    set_alert('danger','email doesn\'t exist or account currently not active.');
+                    redirect('welcome/login_t');
+                           }   
                 }
                else {
-                    $this->load->view('pages/user_login',$data);
+                    $this->mViewFile='pages/user_login';
                 }
         }
         public function signup_t()
         {
-             $data['title']="Thiran | User signup";
-            $this->load->view('pages/user_signup',$data);
+            $this->mViewFile='pages/user_signup';
         }
 
         public function signup()
@@ -65,25 +78,27 @@ $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|i
 $this->form_validation->set_rules('phone_no', 'Phone no', 'trim|required|is_natural|min_length[10]');
 if ($this->form_validation->run()!= FALSE)
 		{
-            $this->load->model('user_model');
-			//NOTE: form validation to come up here
+           $user_data = elements(['first_name', 'last_name', 'email', 'password','college_id','phone_no','ypassout','role','company_name'], $this->input->post(),NULL);
+           $user_data['password'] = md5($user_data['password']);
+           $user_data['activation_code'] = generate_unique_code();
+           
+           //confirm to create user
+           $user_id=  $this->users->insert($user_data);
+      
+           if ( !empty($user_id) )
+			{
+				// get newly created user (with activation code)
+				$user = $this->users->get($user_id);
 
-			//Enter details into database
-			$signup = $this->user_model->signup_t(array(
-                                'first_name' => $this->input->post('first_name'),
-                                'last_name' => $this->input->post('last_name'),
-				'email' => $this->input->post('email'),
-                                'password' => $this->input->post('password'),
-                                'college_id' => $this->input->post('college_id'),
-				'phone_no' => $this->input->post('phone_no'),
-				'ypassout' => $this->input->post('ypassout'),
-                              	'utype' => $this->input->post('user_type'),
-                                'company_name'=>$this->input->post('company_name')
-                            
-                            
-			));
-                        if($signup)
-                        {
+				// send activation email (make sure config/email.php is properly set first)
+				/*
+				$to_name = $user['first_name'].' '.$user['last_name'];
+				$subject = 'Account Activation';
+				send_email($user['email'], $to_name, $subject, 'signup', $user);
+				*/
+
+				// redirect with success message
+				set_alert('success', 'Thanks for signing up! You will receive a email shortly to activate your account.');
                            $data['status']="success";
                             echo json_encode($data);
                         }
@@ -101,10 +116,6 @@ if ($this->form_validation->run()!= FALSE)
  }
 
         }
-        public function logout() {
-		//log out user
-		//function is inside the library folder
-		$this->auth->logout();
-	}
+        
 }
 

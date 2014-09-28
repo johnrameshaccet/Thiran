@@ -64,7 +64,14 @@ $autoload['libraries'] = array('database', 'session','OAuth2','Auth','form_valid
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form', 'url', 'utility');
+$autoload['helper'] = array(
+
+	// CodeIgniter helpers
+	'url', 'html', 'form', 'inflector', 'array',
+
+	// CI Bootstrap helpers
+	'alert', 'auth',
+);
 
 
 /*
