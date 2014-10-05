@@ -31,7 +31,7 @@
 		</aside>
                 
 		<!-- Right side column. Contains the navbar and content of the page -->
-		<aside class="right-side">
+		<aside id="content" class="right-side">
 			<section class="content-header">
 				<h1>{title}</h1>
 				<?php $this->load->view('_partial/breadcrumb'); ?>

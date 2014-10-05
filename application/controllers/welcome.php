@@ -5,7 +5,7 @@ class Welcome extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('User_model', 'users');
+		$this->load->model('default_model','user');
 		$this->load->helper('email');
 	}
 	public function index()
@@ -28,10 +28,10 @@ if ($this->form_validation->run()!= FALSE)
          
                         $email = $this->input->post('email');
 			$password = $this->input->post('password');
-			$user = $this->users->get_by([
+			$user = $this->user->get_one(array(
 				'email'		=> $email,
 				'active'	=> 1
-			]);
+			));
                        if ( !empty($user) )
 			{
              
@@ -39,7 +39,7 @@ if ($this->form_validation->run()!= FALSE)
 				if ( verify_pw($password, $user['password']) )
 				{
 					// limited fields to store in session
-					$fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id');
+					$fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id','profile_notify');
 					$user_data = elements($fields, $user);
 					login_user($user_data);
 
@@ -83,12 +83,12 @@ if ($this->form_validation->run()!= FALSE)
            $user_data['activation_code'] = generate_unique_code();
            
            //confirm to create user
-           $user_id=  $this->users->insert($user_data);
+           $user_id= $this->user->insert($user_data);
       
            if ( !empty($user_id) )
 			{
 				// get newly created user (with activation code)
-				$user = $this->users->get($user_id);
+				$user = $this->user->get($user_id);
 
 				// send activation email (make sure config/email.php is properly set first)
 				/*

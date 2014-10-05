@@ -12,8 +12,9 @@ function alert_box()
 	if ( !empty($alert) )
 	{
 		$type = $alert['type'];
+                $icon = $alert['icon'];
 		$msg = $alert['msg'];
-		return "<div class='alert alert-$type' style='margin-left:0'><button style='margin-top:0px' type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>$msg</div>";
+		return "<div class='alert alert-$type' style='margin-left:0'><i class='fa fa-$icon'></i><button style='margin-top:0px' type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>$msg</div>";
 	}
 }
 
@@ -34,11 +35,11 @@ function callout_box()
 
 // Save to flashdata
 // Remark: title is optional and only display in callout box
-function set_alert($type, $msg, $title = '')
+function set_alert($type, $msg, $icon = '')
 {
 	$CI =& get_instance();
 	$CI->session->set_flashdata('alert_type', $type);
-	$CI->session->set_flashdata('alert_title', $title);
+	$CI->session->set_flashdata('alert_icon', $icon);
 	$CI->session->set_flashdata('alert_msg', $msg);
 }
 
@@ -47,11 +48,11 @@ function get_alert()
 {
 	$CI =& get_instance();
 	$type = $CI->session->flashdata('alert_type');
-	$title = $CI->session->flashdata('alert_title');
+	$icon = $CI->session->flashdata('alert_icon');
 	$msg = $CI->session->flashdata('alert_msg');
 
 	if ( !empty($type) && !empty($msg) )
-		return array('type' => $type, 'msg' => $msg);
+		return array('type' => $type, 'msg' => $msg,'icon' => $icon);
 	else
 		return NULL;
 }

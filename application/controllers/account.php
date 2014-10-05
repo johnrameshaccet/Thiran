@@ -5,6 +5,6 @@ class Account extends MY_Controller
 public function logout()
 	{
 		logout_user();
-		redirect('welcome');
+		redirect('welcome','refresh');
 	}
 }

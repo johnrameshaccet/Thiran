@@ -8,7 +8,39 @@
 		
 		<title>Thiran - {title}</title>		
 		<script src="<?php echo base_url('assets/dist/backend.min.js'); ?>"></script>
+                <script src="<?php echo base_url('assets/dist/appcustom.js'); ?>"></script>
+                  <!-- InputMask -->
+        <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.js');?>"></script>
+        <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
+        <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.extensions.js');?>"></script>
+         <!-- DateRange -->
+        <script src="<?php echo base_url('assets/dist/date_range_picker/tether.min.js');?>"></script>
+       <script src="<?php echo base_url('assets/dist/date_range_picker/datePicker.js');?>"></script>
+                <script type="text/javascript" src="<?php echo base_url('assets/dist/pjax-standalone.js');?>"></script> 
+	<script type='text/javascript'>
+		// Ensure console is defined
+		if(typeof console === 'undefined') console = {"log":function(m){}};
 
+		// PJAX links!
+		pjax.connect({
+			'container': 'content',
+			'success': function(event){
+				var url = (typeof event.data !== 'undefined') ? event.data.url : '';
+				console.log("Successfully loaded "+ url);
+			},
+			'error': function(event){
+				var url = (typeof event.data !== 'undefined') ? event.data.url : '';
+				console.log("Could not load "+ url);
+			},
+			'ready': function(){
+				console.log("PJAX loaded!");
+			}
+		});
+		// pjax.connect('content', 'pjaxer');
+		// pjax.connect('content');
+		// pjax.connect();
+
+	</script>
 		<?php
 			// Grocery CRUD scripts
 			if ( !empty($crud_data) )
@@ -22,6 +54,8 @@
 		?>
 		
 		<link href="<?php echo base_url('assets/dist/backend.min.css'); ?>" rel="stylesheet">
+                <link href="<?php echo base_url('assets/dist/appcustom.css'); ?>" rel="stylesheet">
+                <link href="<?php echo base_url('assets/dist/date_range_picker/picker.css'); ?>" rel="stylesheet">
                 <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

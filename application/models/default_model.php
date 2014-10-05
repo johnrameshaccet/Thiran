@@ -1,11 +1,10 @@
 <?php
 
-class User_model extends MY_Model
+class Default_model extends MY_Model
 {
     public function __construct()
     {
         parent::__construct();
-        $name=get_table();
-	$this->load_table($name);
+	$this->load_table('users');
     }
 }

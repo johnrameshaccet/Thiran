@@ -33,10 +33,13 @@ class Controller extends CI_Hooks
 			// push to mViewData before rendering
 			$CI->mViewData['breadcrumb'] = $CI->mBreadcrumb;
 		}
-
+                if ($ctrler =='profile')
+		{
+                  $CI->mViewData['profile'] =$CI->profile_save;
+                }
 		// render output
 		$view_data = empty($CI->mViewData) ? NULL : $CI->mViewData;
-               if ($methd!='signup')
+               if (($methd!='signup'))
                {
 		$CI->load->view($CI->mViewFile, $view_data);
                }

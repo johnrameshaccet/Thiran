@@ -84,3 +84,16 @@ function verify_role($role, $target_user = NULL)
 
 	return FALSE;
 }
+
+function set_table($val)
+{
+    $CI =& get_instance();
+	$CI->session->set_userdata('table_name', $val);
+}
+
+function get_table()
+{
+	$CI =& get_instance();
+	$name = $CI->session->userdata('table_name');
+        return $name;
+}

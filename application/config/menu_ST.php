@@ -12,7 +12,7 @@ $config['menu'] = array(
 
          'home' => array(
 		'name'      => 'Home',
-		'url'       => site_url(),
+		'url'       => site_url('home'),
 		'icon'      => 'fa fa-home'
 	),
     

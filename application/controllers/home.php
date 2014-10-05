@@ -5,7 +5,12 @@ class Home extends MY_Controller
 
 	public function index()
 	{
+            
 		$this->mTitle = "Home";
-		$this->mViewFile = 'home';
-	}
+		$this->mViewFile = 'pages/home';
+	     
+        
+        
+         }
+
 }

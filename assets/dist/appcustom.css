@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 5, 2014, 4:13:49 PM
+    Author     : kishok
+*/
+            .selectMonths{ float:right; position:relative; display:inline-block; }
+            .selectMonthsselect {height: 30px; }
+            .selectMonths > i{ position:absolute; right:5px; top:15px; font-style:normal; font-size:18px; transition:0.2s; pointer-events:none; }
+            .selectMonths > input{ text-transform:capitalize; padding-left:10px; cursor:default; cursor:pointer;width: 215px;height:34px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.428571429;
+	color:#555;
+	vertical-align:middle;
+	background-color:#fff;
+	background-image:none;
+	border:1px solid #ccc;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s }
+            .selectMonths:hover > i{ opacity:.7; }
+            .selectMonths + .selectMonths{ float:none; }

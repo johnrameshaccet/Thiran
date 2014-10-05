@@ -22,7 +22,7 @@
 					<ul class="dropdown-menu">
 						<li class="user-header bg-light-blue">
                                                     <img src="<?php echo asset_url(); ?>img/user.png" class="img-circle" alt="User Image" />
-                                                    <p><?php echo $user['first_name']; ?>&nbsp;<?php echo $user['last_name']; ?></p>
+                                                    <p><?php echo $user['first_name']; ?>&nbsp;<?php echo $user['last_name']; ?> - <?php echo $user['role']; ?></p>
 						</li>
                                                  <!-- Menu Body -->
                                 <li class="user-body">
@@ -41,7 +41,7 @@
 								<a href="<?php echo site_url('account'); ?>" class="btn btn-default btn-flat">Account</a>
 							</div>
 							<div class="pull-right">
-								<a href="<?php echo site_url('account/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
+                                                            <button id="signout" class="btn btn-default btn-flat">Sign out</button>
 							</div>
 						</li>
 					</ul>
