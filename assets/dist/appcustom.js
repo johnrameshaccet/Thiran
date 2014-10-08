@@ -1,7 +1,8 @@
 $(document).ready(function() {
 $("body").toggleClass("fixed");
 $("#signout").click(function(){
- window.location.href="account/logout";
+    var base_url = window.location.origin;
+ window.location.href=base_url+"/Thiran/account/logout";
 });
 });
 $(document).on('hover', '#datemask', function(){  
@@ -26,15 +27,31 @@ $(document).on('hover', '#datemask', function(){
  
  $(document).on('click', '#personal_save', function(e){  
   e.preventDefault();
- 
+ var base_url = window.location.origin;
   $.ajax({
-    url:"profile/general",
+    url:base_url+"/Thiran/profile/general",
     type:"post",
     data: $('#save_1').serialize(),
     success: function(result){
         $('#msg').html('<span class="alert-success">info saved!</span>');
         setTimeout(function() {
   $("#msg").fadeOut().empty();
+}, 5000);
+    }
+  });
+ });
+ 
+  $(document).on('click', '#edu_save', function(e){  
+  e.preventDefault();
+  var base_url = window.location.origin;
+  $.ajax({
+    url:base_url+"/Thiran/profile/education",
+    type:"post",
+    data: $('#save_2').serialize(),
+    success: function(result){
+        $('#msg2').html('<span class="alert-success">info saved!</span>');
+        setTimeout(function() {
+  $("#msg2").fadeOut().empty();
 }, 5000);
     }
   });

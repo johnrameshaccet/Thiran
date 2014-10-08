@@ -29,6 +29,7 @@
 				console.log("Successfully loaded "+ url);
 			},
 			'error': function(event){
+                            console.log(event);
 				var url = (typeof event.data !== 'undefined') ? event.data.url : '';
 				console.log("Could not load "+ url);
 			},

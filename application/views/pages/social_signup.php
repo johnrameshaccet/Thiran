@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $title ?></title>
+    <title>Thiran | Social signup</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo asset_url();?>css/bootstrap.min.css" rel="stylesheet">
@@ -60,45 +60,62 @@
 			</div>
 			<?php echo form_open('social/signup',array('class'=>'form-horizontal','role'=>'form')); ?>
                         <div class="form-group">
-				<label for="name" class="col-lg-2 control-label">Name</label>
+				<label for="fname" class="col-lg-2 control-label">First Name</label>
 				<div class="col-lg-10">
-                                    <input disabled="disabled" class="form-control" id="fname" name="fname" value="<?php echo $this->session->userdata('name'); ?>">
-				</div>
-			</div>
-                         
-			<div class="form-group">
-				<label for="college" class="col-lg-2 control-label">College</label>
-				<div class="col-lg-10">
-					 <select id="college" name="college_id" class="form-control">
-                                            <option value="ACCET">ACCET</option>
-                                            <option value="TC">TC</option>
-                                        </select>
+                                    <input readonly class="form-control" name="first_name" value="<?php if(!empty($info)){ echo $info['first_name'];} ?>">
 				</div>
 			</div>
                         <div class="form-group">
-				<label for="email" class="col-lg-2 control-label">Email</label>
+				<label for="lname" class="col-lg-2 control-label">Last Name</label>
 				<div class="col-lg-10">
-                                    <input disabled="disabled" class="form-control" id="email" name="email" value="<?php echo $this->session->userdata('email'); ?>">
+                                    <input readonly class="form-control" name="last_name" value="<?php if(!empty($info)){echo $info['last_name'];} ?>">
 				</div>
 			</div>
-			<div class="form-group">
+                         <div class="form-group">
+				<label for="email" class="col-lg-2 control-label">Email</label>
+				<div class="col-lg-10">
+                                    <input readonly class="form-control" name="email" value="<?php if(!empty($info)){ echo $info['email'];} ?>">
+				</div>
+			</div>
+                        <input type="hidden" name="uid" value="<?php if(!empty($info)){ echo $info['uid'];} ?>">
+                        <div class="form-group">
 				<label for="mobile" class="col-lg-2 control-label">Mobile</label>
 				<div class="col-lg-10">
 					<input type="text" class="form-control" id="mobile" name="phone_no" placeholder="Your mobile number">
 				</div>
 			</div>
-                        <div class="form-group">
-				<label for="ypassout" class="col-lg-2 control-label">Year of passout</label>
+                        <div class="form-group"> <label for="user_type" class="col-lg-2 control-label">User type</label>
+							<div class="col-lg-10">	
+                                                      <select id="user_type" name="role" class="form-control" onChange='checkForPassOut(this)'>
+                                                                <option value="0">Select-one</option>
+                                                                <option value="AL">Alumni</option>
+                                                                <option value="ST">Student</option>
+                                                                <option value="RE">Recruiter</option>
+                                                                 </select>
+								</div>
+                        </div>
+			<div id ="div_college" style="display:none" class="form-group">
+				<label for="college_id" class="col-lg-2 control-label">College</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" id="ypassout" name="ypassout" placeholder="Year Passout">
+					 <select id="college_id" name="college_id" class="form-control">
+                                             <option value="0">select colg</option>
+                                            <option value="ACCET">ACCET</option>
+                                            <option value="TC">TC</option>
+                                        </select>
 				</div>
 			</div>
-			 <div class="form-group">
-				<label for="utype" class="col-lg-2 control-label">User_Type</label>
-				<div class="col-lg-10">
-					<input type="text" class="form-control" id="utype" name="utype" placeholder="User type">
-				</div>
-			</div>
+          <div id ="div_ypassout"style="display:none" class="form-group"> 
+              <label for="ypassout" class="col-lg-2 control-label">Year of Passout </label>
+				<div class="col-lg-10">				
+                   <input type="text" class="form-control" name="ypassout" id="ypassout" />
+                                </div></div>
+                             <div id ="div_company"style="display:none" class="form-group">
+                                 <label for="company_name" class="col-lg-2 control-label">Company Name </label>
+							<div class="col-lg-10">	
+                                <input type="text" class="form-control" name="company_name" id="company_name" />
+							</div>
+                             </div>
+			 
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<button type="submit" id="signup_submit" class="btn btn-lg btn-info">Start <i class="glyphicon glyphicon-chevron-right"></i></button>
@@ -111,21 +128,9 @@
 </div>
         </div>
     </header>
-
-   
-   <script>
-$(document).ready(function() {
-
-	$('#signup_submit').click(function(e){
-		if($('#college').val().length <3 || $('#mobile').val().length < 9 || $('#email').val().length < 4){
-			
-			$('#error_signup').show();
-			e.preventDefault();
-				return false;
-		}
-	});
-});
-</script>
+      <!-- jQuery Version 1.11.0 -->
+<script src="<?php echo asset_url();?>js/jquery-1.11.0.js"></script>
+<script src="<?php echo asset_url();?>js/signup.js"></script>
 
    
 </body>

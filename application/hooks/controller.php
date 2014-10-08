@@ -12,7 +12,7 @@ class Controller extends CI_Hooks
 		$ctrler = $CI->router->fetch_class();
 		$methd  =$CI->router->fetch_method();
 		// only for pages after login
-		if ($ctrler!='welcome')
+		if ($ctrler!='welcome'&& $ctrler!='social')
 		{
 			// fallback when mTitle is not set / empty
 			if ( empty($CI->mTitle) )
@@ -36,6 +36,10 @@ class Controller extends CI_Hooks
                 if ($ctrler =='profile')
 		{
                   $CI->mViewData['profile'] =$CI->profile_save;
+                }
+                 if ($ctrler =='social')
+		{
+                  $CI->mViewData['info'] =$CI->info;
                 }
 		// render output
 		$view_data = empty($CI->mViewData) ? NULL : $CI->mViewData;

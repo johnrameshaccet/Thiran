@@ -39,7 +39,7 @@ if ($this->form_validation->run()!= FALSE)
 				if ( verify_pw($password, $user['password']) )
 				{
 					// limited fields to store in session
-					$fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id','profile_notify');
+					$fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id','profile_notify','profile_use','profile_created');
 					$user_data = elements($fields, $user);
 					login_user($user_data);
 

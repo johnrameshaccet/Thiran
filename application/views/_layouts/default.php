@@ -9,7 +9,7 @@
 			<section class="sidebar">
 				<div class="user-panel">
                                      <div class="pull-left image">
-                            <img src="<?php echo asset_url(); ?>img/user.png" class="img-circle" alt="User Image" />
+                            <img src="<?php if(!empty($profile)){ echo $profile['photo'];} ?>" class="img-circle" alt="User Image" />
                                      </div>
 					<div class="pull-left info">
 						<p>Hello, <?php echo $user['first_name']; ?></p>

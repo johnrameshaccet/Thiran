@@ -2,9 +2,15 @@
     
 class Social extends CI_Controller {
     
+    var $info;
+    public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('default_model','user');
+		$this->load->helper('email');
+	}
+        
    public function session($provider) { 
-
-    	 $this->load->helper('url_helper');
          //facebook
          if($provider == 'facebook') {
                 $app_id = $this->config->item('facebook_id');
@@ -38,24 +44,30 @@ class Social extends CI_Controller {
             {
                 $token = $provider->access($_GET['code']);
                 $user = $provider->get_user_info($token);
-               $this->session->set_userdata(array(
+                $this->info=array(
 					'uid' => $user['uid'], 
 					'first_name' => $user['first_name'],
                                         'last_name' => $user['last_name'],
-					'name' => $user['name'],
-					'email' => $user['email'],
-					'image' => $user['image']
-					
-				));
-                $this->load->model('user_model');
-		$login_type = $this->user_model->signed_in($user['uid']);
-                if($login_type == "signup"){
-				//first timer. let the user fill out details
-				$this->signup();
-			}else if($login_type == "signin"){
-                            $this->user_model->get_user($user['uid']);
-                      $this->load->view('template');
-                        }
+					'email' => $user['email']
+				);
+                $data=  $this->info;
+               $login_type = $this->user->get_one(array('uid'=>$data['uid'],'active'	=> 1));
+                if(isset($login_type['uid'])&& $login_type['active']==1){
+			 $user = $this->user->get_one(array(
+                                'uid'           => $data['uid'],
+				'email'		=> $data['email'],
+				'active'	=> 1
+			));
+                       $fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id','profile_notify');
+		       $user_data = elements($fields, $user);
+                       login_user($user_data);
+                       // redirect with home
+                                redirect('home');
+			}
+             else{
+			//to read first-time details
+                            $this->signup();
+             }
                       
             }
 
@@ -69,35 +81,36 @@ class Social extends CI_Controller {
     public function signup() {
 		//check if signup form was submitted
 		if($this->input->post('signup') == "true"){
-			
-			$this->load->model('user_model');
-			//NOTE: form validation to come up here
-
 			//Enter details into database
-			$signup = $this->user_model->signup(array(
-				'college_id' => $this->input->post('college_id'),
-				'phone_no' => $this->input->post('phone_no'),
-				'ypassout' => $this->input->post('ypassout'),
-                              	'utype' => $this->input->post('utype')
-                            
-                            
-			));
+                        $user_data = elements(['first_name','last_name','uid','email','college_id','phone_no','ypassout','role','company_name'], $this->input->post(),NULL);
+                        $user_data['active']=1; 
+                        
+                        //confirm to create user
+              $user_id= $this->user->insert($user_data);
 
-			if($signup){
-				//data successfully added to database
-                             $this->session->set_flashdata('success', 'Successfully submitted...');
-                             
-			}else{
-				//there was a problem logging in.
-				//send flash_message
-                             $this->session->set_flashdata('error', 'Sign up error Try again...');
-				redirect('welcome');
-			}
+		if ( !empty($user_id) )
+			{
+				// get newly created user (with activation code)
+				$user = $this->user->get_one(array('id'=>$user_id,'active'=> 1));
 
-			redirect('welcome');
-		}else{
-                     $data['title']="Thiran | User signup";
-			$this->load->view('pages/social_signup',$data);
+				// send activation email (make sure config/email.php is properly set first)
+				/*
+				$to_name = $user['first_name'].' '.$user['last_name'];
+				$subject = 'Account Activation';
+				send_email($user['email'], $to_name, $subject, 'signup', $user);
+				*/
+                                
+                                $fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id','profile_notify');
+				$user_data = elements($fields, $user);
+                                  login_user($user_data);
+				// redirect with home
+                                redirect('home');
+                                
+                          }	
+		}
+                else{
+                    
+                        $this->mViewFile='pages/social_signup';
 		}
 	}
 
