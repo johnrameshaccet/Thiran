@@ -33,7 +33,7 @@ class Controller extends CI_Hooks
 			// push to mViewData before rendering
 			$CI->mViewData['breadcrumb'] = $CI->mBreadcrumb;
 		}
-                if ($ctrler =='profile')
+                if ($ctrler =='profile'||$ctrler =='home')
 		{
                   $CI->mViewData['profile'] =$CI->profile_save;
                 }

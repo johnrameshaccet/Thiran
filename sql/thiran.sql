@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2014 at 02:37 PM
+-- Generation Time: Oct 08, 2014 at 09:32 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('d1ddeed27a880e9dcc0232ab786149a3', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0 FirePHP/0.7.4', 1412511844, 'a:3:{s:9:"user_data";s:0:"";s:11:"thiran_user";a:7:{s:2:"id";s:8:"10101003";s:4:"role";s:2:"ST";s:10:"first_name";s:4:"test";s:9:"last_name";s:4:"user";s:5:"email";s:14:"test@gmail.com";s:10:"college_id";s:5:"ACCET";s:14:"profile_notify";s:5:"empty";}s:12:"is_logged_in";b:1;}');
+('ee7f8d1bd2cbb7434354a980737880ce', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0 FirePHP/0.7.4', 1412794483, 'a:4:{s:9:"user_data";s:0:"";s:11:"thiran_user";a:9:{s:2:"id";s:8:"10010102";s:4:"role";s:2:"ST";s:10:"first_name";s:4:"test";s:9:"last_name";s:4:"user";s:5:"email";s:14:"test@gmail.com";s:10:"college_id";s:5:"ACCET";s:14:"profile_notify";s:4:"done";s:11:"profile_use";s:27:"user_general,user_education";s:15:"profile_created";s:10:"2014-10-08";}s:12:"is_logged_in";b:1;s:10:"table_name";s:14:"user_education";}');
 
 -- --------------------------------------------------------
 
@@ -89,18 +89,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` varchar(20) NOT NULL,
   `company_name` varchar(200) DEFAULT NULL,
   `profile_notify` varchar(50) NOT NULL DEFAULT 'empty',
+  `profile_use` text,
   `profile_created` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10101004 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10010103 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `college_id`, `phone_no`, `uid`, `activation_code`, `active`, `forgot_password_code`, `forgot_password_time`, `last_update`, `ypassout`, `role`, `company_name`, `profile_notify`, `profile_created`) VALUES
-(10101001, 'kishok', 'kumar', 'kishokz92@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'ACCET', '9688737417', '0', 'a5255074c4366dd28f9160bf579f54f0', 1, NULL, NULL, '2014-10-05 03:05:07', 2014, 'AL', '', '1', NULL),
-(10101002, 'salim', 'kumar', 'salim@gmail.com', 'c33367701511b4f6020ec61ded352059', '0', '9688747317', '0', '6ddd52b4affb8c73cb3de54d4c4bd567', 1, NULL, NULL, '2014-09-28 08:21:27', 0, 'RE', 'accenture', 'empty', NULL),
-(10101003, 'test', 'user', 'test@gmail.com', '508df4cb2f4d8f80519256258cfb975f', 'ACCET', '9876543218', '0', '95a120d77fabc7ea96fc471e0d8c8ad5', 1, NULL, NULL, '2014-10-05 08:00:19', 2015, 'ST', '', 'empty', NULL);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `college_id`, `phone_no`, `uid`, `activation_code`, `active`, `forgot_password_code`, `forgot_password_time`, `last_update`, `ypassout`, `role`, `company_name`, `profile_notify`, `profile_use`, `profile_created`) VALUES
+(10010101, 'kishok', 'kumar', 'kishokz92@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'ACCET', '9688767457', '0', 'd7656658536eebe1d99b23550860bb78', 1, NULL, NULL, '2014-10-08 11:00:17', 2014, 'AL', '', 'empty', NULL, NULL),
+(10010102, 'test', 'user', 'test@gmail.com', '508df4cb2f4d8f80519256258cfb975f', 'ACCET', '9688767456', '0', '98a62d9d4e448255ef7c7a72781f9430', 1, NULL, NULL, '2014-10-08 14:53:10', 2015, 'ST', '', 'done', 'user_general,user_education', '2014-10-08');
 
 -- --------------------------------------------------------
 
@@ -134,10 +134,17 @@ CREATE TABLE IF NOT EXISTS `user_education` (
   `specialization` varchar(225) NOT NULL,
   `duration` varchar(200) NOT NULL,
   `cgpa` varchar(100) NOT NULL,
-  `attachment` varchar(300) NOT NULL,
+  `attachment` varchar(300) DEFAULT NULL,
   `is_current_stud` int(10) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_education`
+--
+
+INSERT INTO `user_education` (`id`, `tenth`, `twelvth`, `diploma`, `degree`, `type_degree`, `college`, `university_regno`, `specialization`, `duration`, `cgpa`, `attachment`, `is_current_stud`) VALUES
+(10010102, '76', '67', '89', 'B.E', 'full', 'ACCET', 12345, 'cse', 'aug 2010 - may 2014', '7.6', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `user_general` (
 --
 
 INSERT INTO `user_general` (`id`, `dob`, `photo`, `gender`, `address`, `city`, `state`, `pincode`) VALUES
-(10101001, '03/03/2046', 0x687474703a2f2f6c6f63616c686f73742f54686972616e2f6173736574732f696d672f757365722e706e67, 'male', 'porur', 'chennai', 'TN', '600048');
+(10010102, '21/03/2011', 0x687474703a2f2f6c6f63616c686f73742f54686972616e2f6173736574732f696d672f352e6a7067, 'male', 'porur', 'chennai', 'TN', '60040');
 
 -- --------------------------------------------------------
 
