@@ -2,7 +2,8 @@
 
 class Welcome extends CI_Controller
 {
-	public function __construct()
+ public $profile_view = array();	
+    public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('default_model','user');
@@ -11,7 +12,8 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		//Check if user is logged in
-		if($this->auth->is_logged_in()){
+            $check=$this->auth->is_logged_in();
+		if($check=="valid"){
                     redirect('home');
                 }
                 else
@@ -25,6 +27,8 @@ $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 $this->form_validation->set_rules('password', 'Password', 'required');
 if ($this->form_validation->run()!= FALSE)
 		{
+           
+    if($this->input->post('ulogin') == "true"){
          
                         $email = $this->input->post('email');
 			$password = $this->input->post('password');
@@ -56,7 +60,8 @@ if ($this->form_validation->run()!= FALSE)
                       else {
                     set_alert('danger','email doesn\'t exist or account currently not active.');
                     redirect('welcome/login_t');
-                           }   
+                           }  
+             }
                 }
                else {
                     $this->mViewFile='pages/user_login';
@@ -116,6 +121,50 @@ if ($this->form_validation->run()!= FALSE)
  }
 
         }
-        
+       public function session_auth()
+         {
+             $data['login']=$this->auth->is_logged_in();
+             echo json_encode($data);
+         }
+         public function profile($pid=FALSE)
+         {
+             if ($pid != FALSE) {
+        //check if profile id is passed 
+        $email_id = urldecode($pid);
+        //then query on that email_id in the database
+         $users = $this->user->get_one(array(
+                 'email'=>$email_id,
+                 'active'=>1
+             ));
+         if ( !empty($users) )
+           {
+             if($this->session->userdata('is_logged_in')!="valid")
+                 {
+                   if($users['profile_use']!=NULL)
+        {
+                $table=array();
+             $tables=$users['profile_use'];
+             $table = explode(",", $tables);
+             foreach ($table as $value) 
+         {
+                 $val = &$value;
+              set_table($val);
+             $this->load->model('user_model',$val);
+              $this->profile_view=array_merge($this->profile_view,$this->$val->get_one(
+                      array(
+				'id'		=> $users['id'],
+				'active'	=> 1
+			)));
+        }
+        }
+        $this->profile_view=array_merge($this->profile_view,$users);
+        $this->mViewFile='pages/profile_view';
+                 }
+           }
+          
+         }
+         
+         
+        }
 }
 

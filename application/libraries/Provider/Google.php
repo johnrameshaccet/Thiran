@@ -36,7 +36,9 @@ class OAuth2_Provider_Google extends OAuth2_Provider
 		// Now make sure we have the default scope to get user data
 		empty($options['scope']) and $options['scope'] = array(
 			'https://www.googleapis.com/auth/userinfo.profile', 
-			'https://www.googleapis.com/auth/userinfo.email'
+			'https://www.googleapis.com/auth/plus.profile.emails.read',
+                         'https://www.googleapis.com/auth/plus.login',
+                    'https://www.googleapis.com/auth/userinfo.email'
 		);
 	
 		// Array it if its string

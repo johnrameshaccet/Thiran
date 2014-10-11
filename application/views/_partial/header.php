@@ -21,7 +21,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li class="user-header bg-light-blue">
-                                                    <img src="<?php if(!empty($profile)){ echo $profile['photo'];} ?>" class="img-circle" alt="User Image" />
+                                                    <img src="<?php if(!empty($profile)){ echo $profile['photo'];}else{ echo base_url('assets/img/user.png'); } ?>" class="img-circle" alt="User Image" />
                                                     <p><?php echo $user['first_name']; ?>&nbsp;<?php echo $user['last_name']; ?> - <?php echo $user['role']; ?></p>
 						</li>
                                                  <!-- Menu Body -->

@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller
 
 		// redirect to Login page if user not logged in
 		$this->mUser = get_user();
-		if ( empty($this->mUser) )
+		if( empty($this->mUser))
 		{
 			redirect('welcome');
 			exit;

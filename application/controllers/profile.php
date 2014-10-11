@@ -9,18 +9,26 @@ class Profile extends MY_Controller
         $this->data = get_user();
     }
 
-    public function index()
+    public function index($pid=FALSE)
     {
-        $data=  $this->data;
-        if($data['profile_notify']!="done")
+         if ($pid != FALSE) {
+        //check if profile id is passed 
+        $email_id = urldecode($pid);
+        //then query on that email_id in the database
+         $users = $this->user->get_one(array(
+                 'email'=>$email_id,
+                 'active'=>1
+             ));
+         if ( !empty($users) )
+        {
+             if($this->session->userdata('is_logged_in')=="valid")
+                 {
+        if($users['profile_notify']!="done")
         {
             $this->edit_profile();
         }
  else {
-       $data=  $this->data;
-         $users = $this->user->get_one(array(
-                 'id'=>$data['id']
-             ));
+      
             if($users['profile_use']!=NULL)
         {
                 $table=array();
@@ -33,7 +41,7 @@ class Profile extends MY_Controller
              $this->load->model('user_model',$val);
               $this->profile_save=array_merge($this->profile_save,$this->$val->get_one(
                       array(
-				'id'		=> $data['id'],
+				'id'		=> $users['id'],
 				'active'	=> 1
 			)));
         }
@@ -41,7 +49,12 @@ class Profile extends MY_Controller
       $this->mTitle = "View Profile";
       $this->mViewFile = 'pages/view_profile';
        }
-       
+       }
+         }
+         else{
+             redirect('welcome/login_t');
+         }
+         }
     }
     
     public function edit_profile()

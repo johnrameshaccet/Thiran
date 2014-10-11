@@ -93,7 +93,7 @@
         <img src="<?php echo asset_url();?>img/user.png" alt="User" class="img-circle" width="150" title="User"/>
         <br><br>
         <!-- Login Form -->
-        <form action="login_t" method="post">
+        <?php echo form_open('welcome/login_t'); ?>
 
                 <!-- Code for username -->
 
@@ -112,9 +112,11 @@
 
                 </div>
                 <label for="password" class="err"><?php echo form_error('password'); ?></label>
+                    <?php echo form_hidden('ulogin','true'); ?>
                 <!-- Login Submit-->
                 <input type="submit" class="btn btn-primary btn-block" name="login" value="Login" />
-        </form>
+                   
+			<?php echo form_close(); ?>
         <a href="#" style="color:#00aced; text-align: center"> Forgot password?</a>
         <!-- Buttons for social login -->
         <!-- facebook login -->

@@ -74,7 +74,7 @@
     <header>
         <div class="container">             
            <div class="intro-text">
-            
+            <?php echo alert_box(); ?>
                <div class="col-md-8">
                <div class="intro-lead-in">Welcome To Our Site!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>

@@ -9,11 +9,11 @@
 			<section class="sidebar">
 				<div class="user-panel">
                                      <div class="pull-left image">
-                            <img src="<?php if(!empty($profile)){ echo $profile['photo'];} ?>" class="img-circle" alt="User Image" />
+                            <img src="<?php if(!empty($profile)){ echo $profile['photo'];}else{ echo base_url('assets/img/user.png'); } ?>" class="img-circle" alt="User Image" />
                                      </div>
 					<div class="pull-left info">
 						<p>Hello, <?php echo $user['first_name']; ?></p>
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+						<a href="#"><i class="fa fa-circle text-success"></i> Online </a>
 					</div>
 				</div>
                              <!-- search form -->

@@ -40,7 +40,10 @@
 
 $route['default_controller'] = "welcome";
 $route['assets/(:any)'] = 'assets/$1';
+$route['profile/(:any)/edit_profile'] = "profile/edit_profile";
+$route['profile/(:any)'] = "profile/index/$1";
 $route['404_override'] = 'error';
+$route['profile_(:any)'] = "welcome/profile/$1";
 
 
 

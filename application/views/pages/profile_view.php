@@ -1,7 +1,52 @@
-<a style="float: right" data-pjax="content" href="<?php echo site_url('profile/'.$user['email']) ?>/edit_profile"> Edit profile</a>
-<div class="row">
-    <div class="col-md-12">
-                    <!--Profile Body-->
+<!DOCTYPE html>
+<html style="min-height: 557px;" class="skin-blue" lang="en"><head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		
+		<title>Thiran - Home</title>		
+		<script src="http://localhost/Thiran/assets/dist/backend.min.js"></script>
+                <script src="http://localhost/Thiran/assets/dist/appcustom.js"></script>
+				
+		<link href="http://localhost/Thiran/assets/dist/backend.min.css" rel="stylesheet">
+                <link href="http://localhost/Thiran/assets/dist/appcustom.css" rel="stylesheet">
+               <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	</head>
+
+	<body style="min-height: 557px;" class="skin-blue fixed  pace-done"><div class="pace  pace-inactive"><div data-progress="99" data-progress-text="100%" style="width: 100%;" class="pace-progress">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+	
+	
+<header class="header">
+
+	<a href="http://localhost/Thiran/" class="logo">
+            Thiran <font style="font-size: small">-strength &amp; grace</font>
+	</a>
+
+	<nav class="navbar navbar-static-top" role="navigation">
+		<div class="navbar-right">
+			<ul class="nav navbar-nav">
+                            <li><a href="welcome/login_t" id="log_signup">LOGIN / SIGNUP</a></li>	
+			</ul>
+		</div>
+	</nav>
+
+</header>
+	<div style="min-height: 557px;" class="wrapper row-offcanvas row-offcanvas-left">
+		<aside id="content" class="right-side">		
+			<section class="content">
+				
+        <div class="row">
+
+        <div class="col-md-12">
+ <!--Profile Body-->
                     <div class="profile-body">
                         <div class="profile-bio">
                             <div class="row">
@@ -10,7 +55,7 @@
                                     
                                 </div>
                                 <div class="col-md-7">
-                                    <h2><?php echo $user['first_name']; ?>&nbsp;<?php echo $user['last_name']; ?></h2>
+                                    <h2><?php echo $profile['first_name']; ?>&nbsp;<?php echo $profile['last_name']; ?></h2>
                                     <span><strong>Job:</strong> Web Developer</span>
                                     <span><strong>Position:</strong> Web Designer</span>
                                     <hr>
@@ -215,7 +260,16 @@
                             <!--End Design Skills-->            
                         </div><!--/end row-->
                     </div>
-                    <!--End Profile Body-->
-                
-</div>
-</div>
+                    <!--End Profile Body-->  
+        </div>
+        </div>
+        </section>
+        </aside>
+
+        </div>
+
+
+
+
+</body>
+</html>

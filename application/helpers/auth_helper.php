@@ -36,7 +36,7 @@ function login_user($user)
 {
 	$CI =& get_instance();
 	$CI->session->set_userdata('thiran_user', $user);
-        $CI->session->set_userdata(array( 'is_logged_in' => TRUE));
+        $CI->session->set_userdata(array( 'is_logged_in' =>"valid"));
 }
 
 // Get user data from session

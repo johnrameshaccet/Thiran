@@ -37,13 +37,17 @@ class Controller extends CI_Hooks
 		{
                   $CI->mViewData['profile'] =$CI->profile_save;
                 }
+                if($methd =='profile')
+                {
+                    $CI->mViewData['profile'] =$CI->profile_view; 
+                }
                  if ($ctrler =='social')
 		{
                   $CI->mViewData['info'] =$CI->info;
                 }
 		// render output
 		$view_data = empty($CI->mViewData) ? NULL : $CI->mViewData;
-               if (($methd!='signup'))
+               if (($methd!='signup')&&($methd!='session_auth'))
                {
 		$CI->load->view($CI->mViewFile, $view_data);
                }

@@ -805,12 +805,6 @@ and open the template in the editor.
 }
 }
 
-
-body {
-    color: #333;
-    font-size: 13px;
-    line-height: 1.6;
-}
 p, li, li a {
     color: #555;
 }
@@ -843,14 +837,11 @@ h6 {
 }
 h1, h2, h3, h4, h5, h6 {
     color: #585f69;
-    font-family: "Open Sans",sans-serif;
     font-weight: normal;
     margin-top: 5px;
     text-shadow: none;
 }
-h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
-    margin-right: 5px;
-}
+
 .headline {
     border-bottom: 1px dotted #e4e9f0;
     display: block;
@@ -950,87 +941,6 @@ h2.heading-xs {
 h3.heading-xs {
     font-size: 14px;
     margin-bottom: 0;
-}
-.devider.devider-dotted {
-    border-top: 2px dotted #eee;
-}
-.devider.devider-dashed {
-    border-top: 2px dashed #eee;
-}
-.devider.devider-db {
-    border-bottom: 1px solid #eee;
-    border-top: 1px solid #eee;
-    height: 5px;
-}
-.devider.devider-db-dashed {
-    border-bottom: 1px dashed #ddd;
-    border-top: 1px dashed #ddd;
-    height: 5px;
-}
-.devider.devider-db-dotted {
-    border-bottom: 1px dotted #ddd;
-    border-top: 1px dotted #ddd;
-    height: 5px;
-}
-.table thead > tr > th {
-    border-bottom: medium none;
-}
-@media (max-width: 768px) {
-.table th.hidden-sm, .table td.hidden-sm {
-    display: none !important;
-}
-}
-.form-control {
-    box-shadow: none;
-}
-.form-control:focus {
-    border-color: #bbb;
-    box-shadow: 0 0 2px #c9c9c9;
-}
-.form-spacing .form-control {
-    margin-bottom: 15px;
-}
-.input-group-addon {
-    background: none repeat scroll 0 0 #fff;
-    color: #b3b3b3;
-    font-size: 14px;
-}
-.carousel-v1 .carousel-caption {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
-    bottom: 0;
-    left: 0;
-    padding: 7px 15px;
-    right: 0;
-}
-.carousel-v1 .carousel-caption p {
-    color: #fff;
-    margin-bottom: 0;
-}
-.carousel-v1 .carousel-arrow a.carousel-control {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    font-size: 30px;
-    height: inherit;
-    opacity: 1;
-    position: inherit;
-    text-shadow: none;
-    width: inherit;
-}
-.carousel-v1 .carousel-arrow a i {
-    background: none repeat scroll 0 0 #000;
-    margin-top: -18px;
-    opacity: 0.6;
-    padding: 2px 12px;
-    position: absolute;
-    top: 50%;
-}
-.carousel-v1 .carousel-arrow a i:hover {
-    opacity: 0.8;
-}
-.carousel-v1 .carousel-arrow a.left i {
-    left: 0;
-}
-.carousel-v1 .carousel-arrow a.right i {
-    right: 0;
 }
 .tab-v1 .nav-tabs {
     -moz-border-bottom-colors: none;

@@ -407,7 +407,7 @@
 				callback(xmlhttp.responseText);
 			}else if((xmlhttp.readyState === 4) && (xmlhttp.status === 404 || xmlhttp.status === 500)){
 				// error (return false)
-				callback(false);
+				callback(xmlhttp.responseText);
 			}
 		};
 		// Secret pjax ?get param so browser doesn't return pjax content from cache when we don't want it to
