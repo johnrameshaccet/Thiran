@@ -6,9 +6,11 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		
-		<title>Thiran - {title}</title>		
+		<title>Thiran - {title}</title>
 		<script src="<?php echo base_url('assets/dist/backend.min.js'); ?>"></script>
                 <script src="<?php echo base_url('assets/dist/appcustom.js'); ?>"></script>
+                 <script src="<?php echo base_url('assets/js/bootstrap-editable.js');?>"></script>
+                 <script src="<?php echo base_url('assets/dist/x-editable.js'); ?>"></script>
                   <!-- InputMask -->
         <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.js');?>"></script>
         <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
@@ -52,6 +54,19 @@
                           }
                       }
                        });
+                        },
+                        'complete':function(){
+                            var base_url = window.location.origin;
+                            var js_script = document.createElement('script');
+                            var x_js_script = document.createElement('script');
+                            js_script.type = "text/javascript";
+                            js_script.src = base_url+"/Thiran/assets/dist/jcrop/crop-avatar.js";
+                            js_script.async = true;
+                            document.getElementsByTagName('head')[0].appendChild(js_script); 
+                             x_js_script.type = "text/javascript";
+                             x_js_script.src = base_url+"/Thiran/assets/dist/x-editable.js";
+                             x_js_script.async = true;
+                            document.getElementsByTagName('head')[0].appendChild(x_js_script);
                         }
 		});
 		// pjax.connect('content', 'pjaxer');
@@ -74,6 +89,10 @@
 		
 		<link href="<?php echo base_url('assets/dist/backend.min.css'); ?>" rel="stylesheet">
                 <link href="<?php echo base_url('assets/dist/appcustom.css'); ?>" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/jcrop/cropper.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-editable.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/jcrop/crop-avatar.css">
                 <link href="<?php echo base_url('assets/dist/date_range_picker/picker.css'); ?>" rel="stylesheet">
                 <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
         <!--[if lt IE 9]>

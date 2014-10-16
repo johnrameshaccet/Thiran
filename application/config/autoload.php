@@ -70,7 +70,7 @@ $autoload['helper'] = array(
 	'url', 'html', 'form', 'inflector', 'array','cookie','date',
 
 	// CI Bootstrap helpers
-	'alert', 'auth',
+	'alert', 'auth','crud'
 );
 
 

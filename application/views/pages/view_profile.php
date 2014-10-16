@@ -1,29 +1,88 @@
-<a style="float: right" data-pjax="content" href="<?php echo site_url('profile/'.$user['email']) ?>/edit_profile"> Edit profile</a>
+
+<a style="float: right" data-pjax="content" href="<?php echo site_url('profile/me/edit') ?>"> Edit profile</a>
+<hr>
+<div class="profile">
 <div class="row">
     <div class="col-md-12">
                     <!--Profile Body-->
                     <div class="profile-body">
                         <div class="profile-bio">
                             <div class="row">
-                                <div class="col-md-5">
-                                    <img class="img-responsive md-margin-bottom-10" src="<?php if(!empty($profile)){ echo $profile['photo'];} ?>" alt="">
-                                    
+                                <div class="col-md-4 md-margin-bottom-20">
+  <div id="crop-avatar">
+
+    <!-- Current avatar -->
+    <div class="avatar-view" title="Change the avatar">
+      <img src="<?php if(!empty($profile)){ echo $profile['photo'];} ?>" alt="Avatar">
+    </div>
+
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatar-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form class="avatar-form" method="post" action="<?php echo base_url(); ?>crop-avatar/" enctype="multipart/form-data">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+            </div>
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput">Local upload</label>
+                  <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                   <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                </div>
+
+                <!-- Crop and preview -->
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="avatar-preview preview-lg"></div>
+                    <div class="avatar-preview preview-md"></div>
+                    <div class="avatar-preview preview-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary avatar-save" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+    <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
+  </div>
                                 </div>
-                                <div class="col-md-7">
-                                    <h2><?php echo $user['first_name']; ?>&nbsp;<?php echo $user['last_name']; ?></h2>
+                                <div id="user" class="col-md-7">
+                                    <button style="float: right" class="btn btn-default" id="enable">enable / disable</button>
+                                    <h2><a id="fname" data-type="text" data-placement="right" data-title="Enter first_name"><?php echo $user['first_name']; ?></a>&nbsp;<a id="lname" data-type="text" data-placement="right" data-title="Enter last_name"><?php echo $user['last_name']; ?></a></h2>
                                     <span><strong>Job:</strong> Web Developer</span>
                                     <span><strong>Position:</strong> Web Designer</span>
                                     <hr>
                                     <i class="fa fa-calendar"></i>&nbsp; <?php if(!empty($profile)){ echo $profile['dob'];} ?><br>
                                     <i class="fa fa-map-marker"></i>&nbsp; <?php if(!empty($profile)){ echo $profile['address'];} ?> <br>
-                                    &nbsp;  <?php if(!empty($profile)){ echo $profile['city'];} ?><br> 
+                                    &nbsp;  <?php if(!empty($profile)){ echo $profile['city'];} ?><br>
                                     &nbsp;  <?php if(!empty($profile)){ echo $profile['state'];} ?><br>
                                     &nbsp;  <?php if(!empty($profile)){ echo $profile['pincode'];} ?><br><br>
+                                    
                                     <?php echo app_btn('','followers<br>67', $url = 'followers'); ?>
 			            <?php echo app_btn('','starred<br>37', $url = 'starred'); ?>
 			            <?php echo app_btn('','follows<br>57', $url = 'follows'); ?>
-                                   </div>
-                            </div>    
+                                    
+                                    </div>
+                                   
+                            </div>
+                            
                         </div><!--/end row-->
                                 
                         <hr>
@@ -58,9 +117,9 @@
                                     </div>
                                     <div class="panel-body">
                                         <small>HTML/CSS</small>
-                                        <small>92%</small>
+                                        <small>82%</small>
                                         <div class="progress progress-u progress-xxs">
-                                            <div style="width: 92%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="92" role="progressbar" class="progress-bar progress-bar-u">
+                                            <div style="width: 82%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="82" role="progressbar" class="progress-bar progress-bar-u">
                                             </div>
                                         </div>
 
@@ -128,7 +187,7 @@
                             </div>    
                         </div>
                         <!--End Timeline-->
-
+                        <br>
                         <!--Timeline-->
                         <div class="panel panel-profile">
                             <div class="panel-heading overflow-h">
@@ -217,5 +276,7 @@
                     </div>
                     <!--End Profile Body-->
                 
+</div>
+    
 </div>
 </div>

@@ -25,6 +25,7 @@ class MY_Controller extends CI_Controller
 		$this->mAction = $this->router->fetch_method();
 		$this->mParam = $this->uri->segment(3);
 
+                if($this->mCtrler!='crop-avatar')
 		// Use default language if the Backend System only support single locale	
 		$this->mLocale = $this->config->item('language');
 

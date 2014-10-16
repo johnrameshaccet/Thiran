@@ -1,24 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Profile extends MY_Controller
 {
-  var $data;
+  var $data,$users;
   public $profile_save = array();
     public function __construct() {
         parent::__construct();
         $this->load->model('default_model','user');
-        $this->data = get_user();
+        $this->data = get_user();      
     }
 
-    public function index($pid=FALSE)
-    {
-         if ($pid != FALSE) {
-        //check if profile id is passed 
-        $email_id = urldecode($pid);
-        //then query on that email_id in the database
-         $users = $this->user->get_one(array(
-                 'email'=>$email_id,
-                 'active'=>1
-             ));
+    public function index()
+    {  
+        $users=$this->data;
          if ( !empty($users) )
         {
              if($this->session->userdata('is_logged_in')=="valid")
@@ -54,11 +47,13 @@ class Profile extends MY_Controller
          else{
              redirect('welcome/login_t');
          }
-         }
+         
     }
     
     public function edit_profile()
     {
+        if($this->session->userdata('is_logged_in')=="valid")
+                 {
         $data=  $this->data;
          $users = $this->user->get_one(array(
                  'id'=>$data['id']
@@ -82,6 +77,7 @@ class Profile extends MY_Controller
         }
             $this->mTitle = "Edit Profile";
 	    $this->mViewFile = 'pages/edit_profile';
+    }
     }
 
         public function general()
@@ -147,6 +143,20 @@ class Profile extends MY_Controller
             }
  }
     
-    
-    
+ public function user_experience()
+ {
+     
+ }
+ 
+ public function user_skils()
+ {
+     
+ }
+ 
+ 
+ public function extra_curr_achievements()
+ {
+     
+ }
+ 
 }

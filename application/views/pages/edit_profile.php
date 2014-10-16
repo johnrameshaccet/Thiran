@@ -8,6 +8,8 @@
                                      <?php if($user['role']=="ST"){ ?>
                                     <li><a href="#tab_2" data-toggle="tab">Educational</a></li>
                                     <?php }?>
+                                    <li><a href="#tab_3" data-toggle="tab">Profession</a></li>
+                               
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                             Dropdown <span class="caret"></span>
@@ -70,6 +72,7 @@
                                          <div class="form-group">
                                              <label for="pincode">Pincode</label><input   required oninvalid="this.setCustomValidity('Enter pincode Here')" oninput="setCustomValidity('')"  type="text" class="form-control" value="<?php if(!empty($profile)){ echo $profile['pincode'];} ?>" id="pincode" name="pincode">
                                         </div>  
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 </fieldset>
                                            <div class="box-footer"> <button type="submit" name="save1" id="personal_save" class="btn btn-primary">Save</button> &nbsp; <button type="reset" class="btn btn-default">Reset</button></div>
                                        </form>
@@ -118,6 +121,7 @@
                                          <div class="form-group">
                                             <label for="cgpa">CGPA</label><input type="text" class="form-control" name="cgpa" value="<?php if(!empty($profile['cgpa'])){ echo $profile['cgpa'];} ?>">
                                         </div>
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                                         <input type="hidden" name="is_current_stud" value="1" />
   </fieldset>    
                                 
@@ -130,6 +134,9 @@
                                         <p>please fill the personal details first..</p>
                    <?php }?>
                                     </div><!-- /.tab-pane -->
+                            <div class="tab-pane active" id="tab_3">
+                               
+                            </div>
                                 </div><!-- /.tab-content -->
                             </div><!-- nav-tabs-custom -->
                     

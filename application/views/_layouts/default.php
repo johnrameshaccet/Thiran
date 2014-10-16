@@ -12,7 +12,7 @@
                             <img src="<?php if(!empty($profile)){ echo $profile['photo'];}else{ echo base_url('assets/img/user.png'); } ?>" class="img-circle" alt="User Image" />
                                      </div>
 					<div class="pull-left info">
-						<p>Hello, <?php echo $user['first_name']; ?></p>
+                                                <p>Hello, <?php if(!empty($user)){ echo $user['first_name'];} ?></p>
 						<a href="#"><i class="fa fa-circle text-success"></i> Online </a>
 					</div>
 				</div>

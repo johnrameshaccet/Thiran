@@ -24,7 +24,60 @@ $(document).on('hover', '#datemask', function(){
             // update settings
 			$('.selectMonths:last input').rangePicker({setDate:null,closeOnSelect:false });
  });
+ $(document).on('click', '#profile_pic', function() {
+     $('#my_photo').click();
+    });
+     
+      $(document).on('change', '#my_photo', function(e) {
+          e.preventDefault();
+              var ext = this.value.match(/\.(.+)$/)[1];
+    switch (ext) {
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+        case 'gif':
+             document.getElementById('uploadButton').removeAttribute("disabled");
+              var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("my_photo").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+            document.getElementById("picture").valueOf(oFREvent.target.result);
+            document.getElementById("uploadPreview").style.display="block";
+            $('#image').html('');
+        };
+            break;
+        default:
+            document.getElementById('uploadButton').setAttribute("disabled","disabled");
+            document.getElementById("uploadPreview").style.display="none";
+            $('#image').html('Only jpg,png,gif are allowed');
+            this.value = '';
+    }
+      });
+       $(document).on('click', '#uploadButton', function(e) {
+          e.preventDefault();
+           var base_url = window.location.origin;
+  $.ajax({
+    url:base_url+"/Thiran/profile/general",
+    
+});
+      });
+         $(document).on('click', '#cancel', function() {
+          $('#image').html('');
+          document.getElementById("uploadPreview").style.display="none";
+          document.getElementById('uploadButton').setAttribute("disabled","disabled");
+         });
  
+ 
+ $(document).on('click', '.toggle-link', function(e) {
+		
+			var target = $($(this).attr('href')).toggleClass('hidden');
+			
+			
+			e.preventDefault();
+		
+		});
+	
  $(document).on('click', '#personal_save', function(e){  
   e.preventDefault();
  var base_url = window.location.origin;

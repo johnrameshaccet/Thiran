@@ -8,7 +8,6 @@
 |
 */
 
-$this->muser=get_user();
 $config['menu'] = array(
 
          'home' => array(
@@ -30,7 +29,7 @@ $config['menu'] = array(
 	),
 	'profile' => array(
 		'name'      => 'Profile',
-		'url'       => site_url('profile/'.$this->muser['email']),
+		'url'       => site_url('profile/me'),
 		'icon'      => 'fa fa-male'
 	),
     'help' => array(
