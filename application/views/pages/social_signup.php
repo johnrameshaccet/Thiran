@@ -43,7 +43,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+ <img src="<?php echo base_url(); ?>assets/img/header-bg.jpg" class="bg">
     <!-- Header -->
     <header>
         <div class="container">

@@ -6,7 +6,7 @@
 
 body {
     overflow-x: hidden;
-    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family:'Raleway';
 }
 .connect-with-button {
 	display: block;
@@ -15,7 +15,14 @@ body {
 	width: 132px;
 	height: 33px;
 }
-
+#head{
+color: #585F69;
+margin-top: 5px;
+text-shadow: none;
+font-weight: normal;
+font-size: 24px;
+margin-bottom: 15px;
+}
 .marginleft13 {
 	margin-left: 13px;
 }
@@ -24,8 +31,36 @@ body {
 	margin: 50px 0 20px 0;
 	border-top: 1px solid #DDD;
 	text-align: center;
+   
+}
+.share-divider {
+	position: relative;
+	margin: 30px 0 20px 0;
+	border-top: 1px solid #DDD;
+	text-align: center;
+   
+}
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
 .shared-divider-label {
 	margin-top: -12px;
 }
@@ -94,14 +129,14 @@ body {
 	margin-top: -1px;
 }
 input[type='submit'],button{
-	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .text-muted {
     color: #777;
 }
 
 .text-primary {
-    color: #fed136;
+    color: #FFF;
 }
 
 p {
@@ -122,14 +157,14 @@ a.active {
 }
 
 a {
-    color: #fed136;
+    color: #FFF;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #fec503;
+    color: #FFF;
 }
 
 h1,
@@ -138,8 +173,8 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: capitalize;
+    font-family: "Raleway";
     font-weight: 700;
 }
 
@@ -155,115 +190,14 @@ h6 {
     background-color: #222;
 }
 
-.btn-primary {
-    border-color: #fed136;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-    color: #fff;
-    background-color: #fed136;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-    border-color: #f6bf01;
-    color: #fff;
-    background-color: #fec503;
-}
-
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-    background-image: none;
-}
-
-.btn-primary.disabled,
-.btn-primary[disabled],
-fieldset[disabled] .btn-primary,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled:active,
-.btn-primary[disabled]:active,
-fieldset[disabled] .btn-primary:active,
-.btn-primary.disabled.active,
-.btn-primary[disabled].active,
-fieldset[disabled] .btn-primary.active {
-    border-color: #fed136;
-    background-color: #fed136;
-}
-
-.btn-primary .badge {
-    color: #fed136;
-    background-color: #fff;
-}
-
-.btn-xl {
-    padding: 20px 40px;
-    border-color: #fed136;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    background-color: #fed136;
-}
-
-.btn-xl:hover,
-.btn-xl:focus,
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-    border-color: #f6bf01;
-    color: #fff;
-    background-color: #fec503;
-}
-
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-    background-image: none;
-}
-
-.btn-xl.disabled,
-.btn-xl[disabled],
-fieldset[disabled] .btn-xl,
-.btn-xl.disabled:hover,
-.btn-xl[disabled]:hover,
-fieldset[disabled] .btn-xl:hover,
-.btn-xl.disabled:focus,
-.btn-xl[disabled]:focus,
-fieldset[disabled] .btn-xl:focus,
-.btn-xl.disabled:active,
-.btn-xl[disabled]:active,
-fieldset[disabled] .btn-xl:active,
-.btn-xl.disabled.active,
-.btn-xl[disabled].active,
-fieldset[disabled] .btn-xl.active {
-    border-color: #fed136;
-    background-color: #fed136;
-}
-
-.btn-xl .badge {
-    color: #fed136;
-    background-color: #fff;
-}
-
 .navbar-default {
     border-color: transparent;
     background-color: #222;
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #fed136;
+    font-family:'Raleway';
+    color: #FFF;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -278,8 +212,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #fed136;
-    background-color: #fed136;
+    border-color: #FFF;
+    background-color: #FFF;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -288,12 +222,12 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #fed136;
+    background-color: #FFF;
 }
 
 .navbar-default .nav li a {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Raleway';
     font-weight: 400;
     letter-spacing: 1px;
     color: #fff;
@@ -302,13 +236,14 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: #fed136;
+    color: #FFF;
 }
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #fed136;
+    background-color: #FFF;
+    text-transform: uppercase;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
@@ -340,7 +275,7 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #222;
+        background-color:rgba(34, 34, 34, 0.26);
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -348,11 +283,12 @@ fieldset[disabled] .btn-xl.active {
     }
 }
 #log_signup{
-     color: #CCC;
+     color: #FFF;
      padding: 10px;
      margin-left: 10px;
      text-transform: uppercase;
-     border: 1px solid #CCC;
+     border: 1px solid #FFF;
+     text-decoration: none;
 }
 #log_signup:hover{
     background:#FFF;
@@ -364,13 +300,6 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url(../img/header-bg.jpg);
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
 }
 
 header .intro-text {
@@ -380,7 +309,7 @@ header .intro-text {
 
 header .intro-text .intro-lead-in {
     margin-bottom: 25px;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway";
     font-size: 22px;
     font-style: italic;
     line-height: 22px;
@@ -392,18 +321,18 @@ header .intro-text .intro-lead-in {
 header .intro-text .intro-heading {
     margin-bottom: 25px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway";
     font-size: 50px;
     font-weight: 700;
     line-height: 50px;
 }
  .f-button-container{
-	background-color:rgba(0,0,0,0.2);
+	background-color:rgba(0, 0, 0, 0.05);
 	border:1px solid #333;
 	padding:15px;
 	border-radius:5px
 }
-.f-button-container .fb-button{
+.fb-button{
 	background-color:#3b5998;
 	width:150px;
 	height:60px;
@@ -444,15 +373,15 @@ header .intro-text .intro-heading {
 	min-width:250px;
 	border:1px solid #777
 }
-.f-button-container .fb-button:hover,.h-btn-container .h-fb-btn:hover{
+ .fb-button:hover,.h-btn-container .h-fb-btn:hover{
 	background-color:#2c4a87;
 	cursor:pointer
 }
 
-.f-button-container .fb-button i{
+ .fb-button i{
 	margin-right:15px
 }
-.f-button-container .fb-button{
+ .fb-button{
 	width:100%;
 	min-width:250px;
 	border:1px solid #777
@@ -460,15 +389,15 @@ header .intro-text .intro-heading {
 @media(min-width:768px) {
     header .intro-text {
         padding-top: 200px;
-        padding-bottom: 430px;
+        padding-bottom: 230px;
     }
      .f-button-container{
-	background-color:rgba(0,0,0,0.2);
+	background-color:rgba(0, 0, 0, 0.05);
 	border:1px solid #333;
 	padding:20px;
 	border-radius:5px
 }
-.f-button-container .fb-button{
+ .fb-button{
 	background-color:#3b5998;
 	width:250px;
 	height:60px;
@@ -509,22 +438,22 @@ header .intro-text .intro-heading {
 	min-width:250px;
 	border:1px solid #777
 }
-.f-button-container .fb-button:hover,.h-btn-container .h-fb-btn:hover{
+ .fb-button:hover,.h-btn-container .h-fb-btn:hover{
 	background-color:#2c4a87;
 	cursor:pointer
 }
 
-.f-button-container .fb-button i{
+.fb-button i{
 	margin-right:15px
 }
-.f-button-container .fb-button{
+.fb-button{
 	width:100%;
 	min-width:250px;
 	border:1px solid #777
 }
     header .intro-text .intro-lead-in {
         margin-bottom: 25px;
-        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "Raleway";
         font-size: 36px;
         font-style: italic;
         line-height: 40px;
@@ -532,11 +461,11 @@ header .intro-text .intro-heading {
 
     header .intro-text .intro-heading {
         margin-bottom: 50px;
-        text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 44px;
-        font-weight: 700;
-        line-height: 75px;
+        text-transform: capitalize;
+        font-family: "Raleway";
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 45px;
     }
 }
 
@@ -553,7 +482,7 @@ section h2.section-heading {
 section h3.section-subheading {
     margin-bottom: 75px;
     text-transform: none;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway";
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
@@ -591,6 +520,68 @@ section h3.section-subheading {
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;
+}
+.social-icons {
+    margin: 0;
+    padding: 0;
+}
+.social-icons li {
+    display: inline-block;
+    list-style: none outside none;
+    margin-bottom: 5px;
+    margin-right: 3px;
+    text-indent: -9999px;
+}
+.social-icons li a, a.social-icon {
+    background-position: 0 -38px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 28px;
+    transition: all 0.3s ease-in-out 0s;
+    width: 28px;
+}
+
+.social-icons-color li a {
+    background-position: 0 -38px !important;
+    
+}
+
+.rounded {
+    border-radius: 4px !important;
+}
+.rounded-x {
+    border-radius: 50% !important;
+}
+.rounded-2x {
+    border-radius: 10px !important;
+}
+.rounded-3x {
+    border-radius: 15px !important;
+}
+.rounded-4x {
+    border-radius: 20px !important;
+}
+.rounded-top {
+    border-radius: 4px 4px 0 0 !important;
+}
+.rounded-left {
+    border-radius: 4px 0 0 4px !important;
+}
+.rounded-right {
+    border-radius: 0 4px 4px 0 !important;
+}
+.rounded-bottom {
+    border-radius: 0 0 4px 4px !important;
+}
+.social_facebook {
+    background: url("../img/social/facebook.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.social_googleplus {
+    background: url("../img/social/googleplus.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.social_linkedin {
+    background: url("../img/social/linkedin.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
@@ -632,7 +623,7 @@ section h3.section-subheading {
 
 #portfolio .portfolio-item .portfolio-caption p {
     margin: 0;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Raleway";
     font-size: 16px;
     font-style: italic;
 }
@@ -713,7 +704,7 @@ section h3.section-subheading {
     border-radius: 100%;
     text-align: center;
     color: #fff;
-    background-color: #fed136;
+    background-color: #FFF;
 }
 
 .timeline>li .timeline-image h4 {
@@ -900,34 +891,34 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: #fed136;
+    border-color: #FFF;
     box-shadow: none;
 }
 
 section#contact::-webkit-input-placeholder {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Raleway';
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-moz-placeholder {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Raleway';
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact::-moz-placeholder {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family:'Raleway';
     font-weight: 700;
     color: #bbb;
 }
 
 section#contact:-ms-input-placeholder {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family:'Raleway';
     font-weight: 700;
     color: #bbb;
 }
@@ -944,7 +935,7 @@ footer {
 footer span.copyright {
     text-transform: uppercase;
     text-transform: none;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Raleway';
     line-height: 40px;
 }
 
@@ -952,7 +943,7 @@ footer ul.quicklinks {
     margin-bottom: 0;
     text-transform: uppercase;
     text-transform: none;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Raleway';
     line-height: 40px;
 }
 
@@ -978,7 +969,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: #fed136;
+    background-color: #FFF;
 }
 
 .btn:focus,
@@ -1010,7 +1001,7 @@ ul.social-buttons li a:active {
 
 .portfolio-modal .modal-content p.item-intro {
     margin: 20px 0 30px;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Raleway';
     font-size: 16px;
     font-style: italic;
 }
@@ -1061,12 +1052,12 @@ ul.social-buttons li a:active {
 
 ::-moz-selection {
     text-shadow: none;
-    background: #fed136;
+    background: #FFF;
 }
 
 ::selection {
     text-shadow: none;
-    background: #fed136;
+    background: #FFF;
 }
 
 img::selection {
@@ -1078,5 +1069,5 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: #fed136;
+    webkit-tap-highlight-color: #FFF;
 }

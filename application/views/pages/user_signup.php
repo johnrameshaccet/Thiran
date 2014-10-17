@@ -20,7 +20,6 @@
     <!-- Custom Fonts -->
     <link href="<?php echo asset_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -31,82 +30,75 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">Thiran -strength & grace</a>
+                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">THIRAN</a>
             </div>
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+ <img src="<?php echo base_url(); ?>assets/img/header-bg.jpg" class="bg">
     <!-- Header -->
     <header>
         <div class="container">
-            <div style="padding-top: 157px;">
+            <div style="padding-top: 120px;">
 	<div class="row">
 <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 login">
     <div class="col-xs-12 well text-center">
-<form id="signup_t" name="signup_t" method="post">
-								<div class="form-group">
-                                                                    <label for="first_name" style="color: black">First Name</label>
-									<input type="text" class="form-control" name="first_name" onBlur="isAlphapet_f()" id="first_name" /><span id="fname"></span>
-								</div>
-								<div class="form-group">
-                                                                <label for="last_name" style="color: black">Last Name</label>
-								
-									<input type="text" class="form-control" name="last_name" onBlur="isAlphapet_l()" id="last_name" /><span id="lname"></span>
-								</div>
-                                                      
-							        <div class="form-group"><label for="email" style="color: black">Email</label>
-								
-                                                                    <input type="email" class="form-control" onblur="emailvalid()" name="email" id="email" /><span id="email_id"></span>
+        <h2 id="head">Register a new account</h2>
+<hr>
+<form id="signup_t" name="signup_t" method="post">                                                                    
+                                                                        <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="Firstname" name="first_name" onBlur="isAlphapet_f()" id="first_name" /><span id="fname"></span>						
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="Lastname" name="last_name" onBlur="isAlphapet_l()" id="last_name" /><span id="lname"></span>
+                                                                   
+                                                                </div>
+							        <div class="form-group">
+                                                                    <input type="email" placeholder="Email" class="form-control" onblur="emailvalid()" name="email" id="email" /><span id="email_id"></span>
 								</div>
 								
                                                             
-                                                               <div class="form-group">  <label for="password" style="color: black">Password</label>
-								
-                                                                    <input type="password" class="form-control" name="password" onBlur='passwd()' id="password" /> <span id="pswd"></span>
+                                                               <div class="form-group"> 
+                                                                   <input type="password" class="form-control" placeholder="Password" name="password" onBlur='passwd()' id="password" /> <span id="pswd"></span>
 								</div> 
-                                                           <div class="form-group">       <label for="conf_password" style="color: black">Confirm Password</label>
+                                                           <div class="form-group">
 								
-                                                                    <input type="password" class="form-control" name="conf_password" onBlur='pass()' id="conf_password" /><span id="cfpswd"></span>
+                                                               <input type="password" class="form-control" placeholder="Confirm Password" name="conf_password" onBlur='pass()' id="conf_password" /><span id="cfpswd"></span>
 								</div>
-								   <div class="form-group"> <label for="phone_no" style="color: black">Mobile</label>
+								   <div class="form-group"> 
 								
-                                                                    <input type="text" class="form-control" name="phone_no" id="phone_no" /> <span id="mobile"></span>
+                                                                       <input type="text" placeholder="Phone no" class="form-control" name="phone_no" id="phone_no" /> <span id="mobile"></span>
 							</div>
-								<div class="form-group"> <label for="user_type" style="color: black">User type</label>
+								<div class="form-group">
 								
                                                       <select id="user_type" name="role" class="form-control" onChange='checkForPassOut(this)'>
-                                                                <option value="0">Select-one</option>
+                                                                <option value="0">User-type</option>
                                                                 <option value="AL">Alumni</option>
                                                                 <option value="ST">Student</option>
                                                                 <option value="RE">Recruiter</option>
                                                                  </select>
 								</div>
-                              <div id ="div_college"style="display:none" class="form-group"> <label for="college_id" style="color: black">College</label>
+                              <div id ="div_college"style="display:none" class="form-group">
 								
                                                                  <select id="college_id" name="college_id" class="form-control">
-                                                                <option value="0">select colg</option>
+                                                                <option value="0">select college</option>
                                                                 <option value="ACCET">ACCET</option>
                                                                 <option value="TC">TC</option>
                                                                  </select>
 								</div>
-                                                          <div id ="div_ypassout"style="display:none" class="form-group"> <label for="ypassout" style="color: black">Year of Passout <?php echo form_error('ypassout'); ?></label>
-								
-                                                                    <input type="text" class="form-control" name="ypassout" id="ypassout" />
+                                                          <div id ="div_ypassout"style="display:none" class="form-group">								
+                                                              <input type="text" class="form-control" placeholder="Year of Passout" name="ypassout" id="ypassout" />
 							</div>
-                             <div id ="div_company"style="display:none" class="form-group"> <label for="company_name" style="color: black">Company Name </label>
+                             <div id ="div_company"style="display:none" class="form-group"> 
 								
-                                                                    <input type="text" class="form-control" name="company_name" id="company_name" />
+                                 <input type="text" placeholder="Company name" class="form-control" name="company_name" id="company_name" />
 							</div>
                            
 								<!-- Signup Submit-->
                                                                 <input type="submit" id="register_submit" class="btn btn-primary btn-block" name='signup' value="Sign Up" />
 							</form>
-							<div id="account-signup-divider" class="shared-divider">
-						<div class="shared-divider-label">
-							<span>or</span>
-						</div>
-					</div>
                        <font style="color: background">Have an Account?</font>  <a style="color: #31b0d5" id="login_t" href='login_t'>Log In</a>
                    </div>		
 </div>

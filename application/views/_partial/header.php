@@ -17,7 +17,7 @@
 				<li class="dropdown user user-menu">
                                     <a style="cursor: pointer" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-user"></i>
-                                                <span><?php echo $user['first_name']; ?>&nbsp;<?php echo $user['last_name']; ?>&nbsp;<i class="caret"></i></span>
+                                                <span><?php echo ucfirst($user['first_name']); ?>&nbsp;<?php echo ucfirst($user['last_name']); ?>&nbsp;<i class="caret"></i></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li class="user-header bg-light-blue">

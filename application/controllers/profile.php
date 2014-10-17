@@ -143,10 +143,7 @@ class Profile extends MY_Controller
             }
  }
     
- public function user_experience()
- {
-     
- }
+
  
  public function user_skils()
  {

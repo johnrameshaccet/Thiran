@@ -11,6 +11,9 @@
                 <script src="<?php echo base_url('assets/dist/appcustom.js'); ?>"></script>
                  <script src="<?php echo base_url('assets/js/bootstrap-editable.js');?>"></script>
                  <script src="<?php echo base_url('assets/dist/x-editable.js'); ?>"></script>
+                  <script src="<?php echo base_url('assets/dist/select2/select2.js'); ?>"></script>
+                 <script src="<?php echo base_url('assets/dist/combodate/lib/moment.min.js');?>"></script>
+                 <script src="<?php echo base_url('assets/dist/combodate/combodate.js');?>"></script> 
                   <!-- InputMask -->
         <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.js');?>"></script>
         <script src="<?php echo base_url('assets/dist/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
@@ -93,7 +96,9 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/jcrop/cropper.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-editable.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/jcrop/crop-avatar.css">
-                <link href="<?php echo base_url('assets/dist/date_range_picker/picker.css'); ?>" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/select2/select2.css">
+   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/select2/select2-bootstrap.css">
+  <link href="<?php echo base_url('assets/dist/date_range_picker/picker.css'); ?>" rel="stylesheet">
                 <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

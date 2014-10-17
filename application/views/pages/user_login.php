@@ -75,16 +75,16 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">Thiran -strength & grace</a>
+                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">THIRAN</a>
             </div>
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+    <img src="<?php echo base_url(); ?>assets/img/header-bg.jpg" class="bg">
     <!-- Header -->
     <header>
         <div class="container">
-            <div style="padding-top: 157px;">
+            <div style="padding-top: 150px;">
 	<div class="row">
 <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 login">
     <div class="col-xs-12 well text-center">
@@ -105,7 +105,7 @@
                  <label for="email" class="err"><?php echo form_error('email'); ?></label>
                 <!-- Code for password -->
 
-                <div class="input-group" style="margin-top: 10px">
+                <div class="input-group" style="margin-top: 3px">
                 <span class="input-group-btn">
                                 <pre class="btn btn-default"><i class="fa fa-lock"></i></pre>
                         </span><input type="password"  required oninvalid="this.setCustomValidity('Enter password Here')" oninput="setCustomValidity('')"  name="password" id="password" class="form-control" placeholder="Password" />
@@ -114,23 +114,33 @@
                 <label for="password" class="err"><?php echo form_error('password'); ?></label>
                     <?php echo form_hidden('ulogin','true'); ?>
                 <!-- Login Submit-->
-                <input type="submit" class="btn btn-primary btn-block" name="login" value="Login" />
-                   
+                <div style="padding-top:2px;padding-bottom: 3px">
+               <input type="submit" class="col-xs-6 btn btn-primary btn-flat" name="login" value="Login" />
+                </div>
 			<?php echo form_close(); ?>
-        <a href="#" style="color:#00aced; text-align: center"> Forgot password?</a>
-        <!-- Buttons for social login -->
-        <!-- facebook login -->
-        <button type="button" data-placement="top" onclick="window.location.href='<?php echo base_url(); ?>social/session/facebook'" title="Login with Facebook" class="btn fa fa-facebook ttip"></button>
-
-        <!-- google login -->
-        <button type="button" data-placement="top" title="Login with Google" onclick="window.location.href='<?php echo base_url(); ?>social/session/google'" class="btn fa fa-google ttip">&nbsp;</button>
-
-        <!-- likedin login -->
-        <button type="button" data-placement="top" title="Login with LinkedIn" class="btn fa fa-linkedin ttip">&nbsp;</button>
-
-        <!-- Signup page link for other's -->
-        <br><span style="color: #222">Don't have account?</span><a href="signup_t" style="color:#00aced"> Signup here</a>
-</div>
+             
+                <a href="#" class="col-xs-6" style="color:rgba(9, 65, 184, 0.86); text-align: center; white-space: nowrap"> Forgot password?</a>
+      
+        <!-- Signup page link for other's -->  
+        <div id="account-signup-divider" class="shared-divider">
+						<div class="shared-divider-label">
+							<span>or</span>
+						</div>
+					</div> 
+         <span style="color: #222">Don't have account?</span><a href="signup_t" style="color:rgba(9, 65, 184, 0.86);"> Sign Up here</a>
+           <div id="account-signup-divider" class="share-divider">
+						<div class="shared-divider-label">
+							<span>Sign in Through</span>
+						</div>
+					</div> 
+  <ul class="social-icons">
+         
+                <li><a href="<?php echo base_url(); ?>social/session/facebook" data-original-title="Facebook" class="rounded-x social_facebook"></a></li>
+                <li><a href="<?php echo base_url(); ?>social/session/google" data-original-title="Google Plus" class="rounded-x social_googleplus"></a></li>
+                <li><a href="#" data-original-title="Linkedin" class="rounded-x social_linkedin"></a></li>
+          
+                        </ul>
+        </div>
 
 	</div>
 </div>

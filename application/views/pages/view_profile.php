@@ -64,16 +64,16 @@
   </div>
                                 </div>
                                 <div id="user" class="col-md-7">
-                                    <button style="float: right" class="btn btn-default" id="enable">enable / disable</button>
-                                    <h2><a id="fname" data-type="text" data-placement="right" data-title="Enter first_name"><?php echo $user['first_name']; ?></a>&nbsp;<a id="lname" data-type="text" data-placement="right" data-title="Enter last_name"><?php echo $user['last_name']; ?></a></h2>
+                                    <a href="#" id="enable"><i class="fa fa-cog pull-right"></i></a>
+                                    <h2><a id="fname" href="#" data-type="text" data-placement="top" data-url="profile/user_update" data-title="Enter first_name"><?php echo ucfirst($user['first_name']); ?></a>&nbsp;<a href="#" id="lname" data-type="text" data-placement="top" data-title="Enter last_name"><?php echo ucfirst($user['last_name']); ?></a></h2>
                                     <span><strong>Job:</strong> Web Developer</span>
                                     <span><strong>Position:</strong> Web Designer</span>
                                     <hr>
-                                    <i class="fa fa-calendar"></i>&nbsp; <?php if(!empty($profile)){ echo $profile['dob'];} ?><br>
-                                    <i class="fa fa-map-marker"></i>&nbsp; <?php if(!empty($profile)){ echo $profile['address'];} ?> <br>
-                                    &nbsp;  <?php if(!empty($profile)){ echo $profile['city'];} ?><br>
-                                    &nbsp;  <?php if(!empty($profile)){ echo $profile['state'];} ?><br>
-                                    &nbsp;  <?php if(!empty($profile)){ echo $profile['pincode'];} ?><br><br>
+                                    <i class="fa fa-calendar"></i>&nbsp;<a href="#" data-title="Select Date of birth" data-name="dob" data-pk="<?php echo $user['id']; ?>" data-template="D / MMM / YYYY" data-viewformat="DD/MM/YYYY" data-format="DD-MM-YYYY" data-value="<?php if(!empty($profile)){ echo $profile['dob'];} ?>" data-type="combodate" id="dob" class="editable editable-click"><?php if(!empty($profile)){ echo $profile['dob'];} ?></a> <br>
+                                    <i class="fa fa-map-marker"></i>&nbsp; <a href="#" id="address" data-type="textarea" data-name="address" data-pk="<?php echo $user['id']; ?>" data-placement="top" data-title="Enter address"><?php if(!empty($profile)){ echo $profile['address'];} ?></a> <br>
+                                    &nbsp; &nbsp; <a href="#" id="city" data-type="select2" data-pk="<?php echo $user['id']; ?>" data-value="<?php if(!empty($profile)){ echo $profile['city'];} ?>" data-title="Select city"> <?php if(!empty($profile)){ echo $profile['city'];} ?></a><br>
+                                    &nbsp; &nbsp; <a href="#" id="state" data-type="select2" data-pk="<?php echo $user['id']; ?>" data-value="<?php if(!empty($profile)){ echo $profile['state'];} ?>" data-title="Select state"> <?php if(!empty($profile)){ echo $profile['state'];} ?></a><br>
+                                    &nbsp; &nbsp; <a id="pincode" data-type="text" href="#" data-placement="top" data-name="pincode" data-pk="<?php echo $user['id']; ?>" data-title="Enter pincode"><?php if(!empty($profile)){ echo $profile['pincode'];} ?></a><br><br>
                                     
                                     <?php echo app_btn('','followers<br>67', $url = 'followers'); ?>
 			            <?php echo app_btn('','starred<br>37', $url = 'starred'); ?>

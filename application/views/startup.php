@@ -19,7 +19,6 @@
     <!-- Custom Fonts -->
     <link href="<?php echo asset_url();?>font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -36,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">Thiran -strength & grace</a>
+                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">THIRAN</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,34 +59,32 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
-                      <li>
-                          <a href="welcome/login_t" id="log_signup">LOGIN / SIGNUP</a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+ <img src="<?php echo base_url(); ?>assets/img/header-bg.jpg" class="bg">
     <!-- Header -->
     <header>
         <div class="container">             
            <div class="intro-text">
             <?php echo alert_box(); ?>
-               <div class="col-md-8">
-               <div class="intro-lead-in">Welcome To Our Site!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
-           </div>
+               <div class="col-md-12">
+                   <div class="intro-heading">"If you look at history, <b>INNOVATION</b>  doesn't come just from giving people incentives; It comes from Creating environments where their ideas can connect"<br>
+                       <font style="float: right">-- Steven Johnson</font></div>
+                     </div>
+               <div class="col-xs-2" style="margin-top: 50px;margin-left: 400px "> <a  style="text-decoration: none" href="welcome/login_t" class="fb-button d_signin_btn">LOGIN / SIGNUP</a></div>
+         
                <br>
-               <div class="col-md-4">
-<div class="f-button-container">
+               
+<!--<div class="f-button-container">
     <div class="fb-button d_signin_btn" id="btn_signin_fb"><a style="text-decoration: none;color:#FFF;" href="social/session/facebook"><i class="fa fa-facebook"></i>Sign in with facebook</a></div><br><br>
     <div class="google-button d_signin_btn" id="btn_signin_google"><a style="text-decoration: none;color:#FFF;" href="social/session/google"><i class="fa fa-google-plus"></i>Sign in with google</a></div>
-</div>	
+</div>	-->
             
-           </div>
+          
            </div>
             </div>
     </header>
