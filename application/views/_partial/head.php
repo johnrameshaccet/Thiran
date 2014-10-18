@@ -41,23 +41,23 @@
 			'ready': function(){
 				console.log("PJAX loaded!");
 			},
-                        'beforeSend': function(){
-                              var base_url = window.location.origin;
-                                  $.ajax({
-                                type:"GET",
-                                url:base_url+"/Thiran/welcome/session_auth",
-                                dataType: "json",
-                                success: function(data){
-                            if(data.login==="invalid"){
-                           console.log("leaving "+data.login);
-                            window.location.href=base_url+"/Thiran/welcome"; 
-                             }
-                              else{
-                              console.log("sending "+data.login);
-                          }
-                      }
-                       });
-                        },
+//                        'beforeSend': function(){
+//                              var base_url = window.location.origin;
+//                                  $.ajax({
+//                                type:"GET",
+//                                url:base_url+"/Thiran/welcome/session_auth",
+//                                dataType: "json",
+//                                success: function(data){
+//                            if(data.login==="invalid"){
+//                           console.log("leaving "+data.login);
+//                            window.location.href=base_url+"/Thiran/welcome"; 
+//                             }
+//                              else{
+//                              console.log("sending "+data.login);
+//                          }
+//                      }
+//                       });
+//                        },
                         'complete':function(){
                             var base_url = window.location.origin;
                             var js_script = document.createElement('script');

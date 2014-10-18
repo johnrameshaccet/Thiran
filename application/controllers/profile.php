@@ -32,11 +32,32 @@ class Profile extends MY_Controller
                  $val = &$value;
               set_table($val);
              $this->load->model('user_model',$val);
-              $this->profile_save=array_merge($this->profile_save,$this->$val->get_one(
+             if($val=="user_general")
+             {
+                 $this->profile_save=  array_merge($this->profile_save,$this->$val->get_one(array('id'=>$users['id'])));
+             }
+ else if($val=="user_education") {
+             $details['edu']=$this->$val->get_many(
                       array(
-				'id'		=> $users['id'],
-				'active'	=> 1
-			)));
+				'user_id'		=> $users['id'],
+                                'distinct'=>FALSE,
+                                 'sort'=>'DESC'
+			));
+             
+                 $this->profile_save=  array_merge($this->profile_save,$details);
+               
+ }
+ else if($val=="user_experience") {
+             $details['exp']=$this->$val->get_many(
+                      array(
+				'user_id'		=> $users['id'],
+                                'distinct'=>FALSE,
+                                 'sort'=>'DESC'
+			));
+             
+                 $this->profile_save=  array_merge($this->profile_save,$details);
+               
+ }
         }
         }
       $this->mTitle = "View Profile";
@@ -119,33 +140,47 @@ class Profile extends MY_Controller
         set_table('user_education');
              $this->load->model('user_model','user_education');
             $details=$this->data;
-            $user_gen = elements(['tenth','twelvth','diploma','degree','type_degree','college','university_regno','specialization','duration','cgpa','is_current_stud'], $this->input->post());
-            
-          
-            $check_id=$this->user_education->get_one(array('id'=>$details['id']));
-            if(empty($check_id['id']))
-            {
-             $user_gen['id']=$details['id'];
+            $user_gen = elements(['degree','type_degree','college','university_regno','specialization','duration','cgpa','is_current_stud'], $this->input->post());
+             $user_gen['user_id']=$details['id'];
             $save_id=$this->user_education->insert($user_gen);
-            if(isset($save_id))
+            $check_id=$this->user_education->get_many(array('user_id'=>$details['id']));
+            if(empty($check_id))
             {
                 $name=get_table();
                 $this->user->get_profile($name,$details['id']);
-                redirect('profile/edit_profile');
             }
+            $profile = $this->user_education->get_one(array(
+				'id'		=> $save_id,
+				'user_id'	=>$details['id']
+			));
+            
+                        exit(json_encode($profile));
             }
-            else {
-                $save_id=$this->user_education->update($user_gen,$details['id']); 
-                if(isset($save_id))
+           
+            public function experience()
             {
-                     redirect('profile/edit_profile');
+             set_table('user_experience');
+             $this->load->model('user_model','user_experience');
+            $details=$this->data;
+            $user_gen=elements(['organization','role','us_experience','join_date','end_date','is_current_role','is_entreprenur','is_ngo'], $this->input->post());
+             $user_gen['user_id']=$details['id'];
+             $save_id=$this->user_experience->insert($user_gen);
+             $check_id=$this->user_experience->get_many(array('user_id'=>$details['id']));
+            if(empty($check_id))
+            {
+                $name=get_table();
+                $this->user->get_profile($name,$details['id']);
             }
+             $profile = $this->user_experience->get_one(array(
+				'id'		=> $save_id,
+				'user_id'	=>$details['id']
+			));
+            
+                        exit(json_encode($profile));
             }
- }
-    
 
- 
- public function user_skils()
+            
+            public function user_skils()
  {
      
  }

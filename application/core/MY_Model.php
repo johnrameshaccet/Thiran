@@ -845,6 +845,19 @@ class MY_Model extends CI_Model {
 		return $result[0];
 	}
 	
+        /**
+	 * Return a single row as a resultset array with specified fields from database matching given conditions.
+	 *
+	 * @param array $options an array of query options (@see get())
+	 * @param array $table the primary table to search
+	 * @param bool $init reset the query object
+	 * @return single row either in array or in object based on model config
+	 */
+	public function get_many($options=array(), $table=null, $init=TRUE)
+	{
+		$result = $this->get($options, $table, $init);
+		return $result;
+	}
 	/**
 	 * Returns the value of a single field
 	 *

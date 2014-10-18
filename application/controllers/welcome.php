@@ -43,7 +43,7 @@ if ($this->form_validation->run()!= FALSE)
 				if ( verify_pw($password, $user['password']) )
 				{
 					// limited fields to store in session
-					$fields = array('id', 'role', 'first_name', 'last_name', 'email', 'college_id','profile_notify','profile_use','profile_created');
+					$fields = array('id');
 					$user_data = elements($fields, $user);
 					login_user($user_data);
 
@@ -124,6 +124,7 @@ if ($this->form_validation->run()!= FALSE)
        public function session_auth()
          {
              $data['login']=$this->auth->is_logged_in();
+             log_message('debug',  print_r($data,TRUE));
              echo json_encode($data);
          }
          public function profile($pid=FALSE)

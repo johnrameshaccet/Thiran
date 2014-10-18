@@ -13,13 +13,15 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 
 		// redirect to Login page if user not logged in
-		$this->mUser = get_user();
-		if( empty($this->mUser))
-		{
+
+		$is_logged_in = $this->session->userdata('is_logged_in');
+		//$facebook_uid =  $this->CI->session->userdata('facebook_uid');
+		if (!isset($is_logged_in) || $is_logged_in != "valid" )
+                {
 			redirect('welcome');
 			exit;
 		}
-
+                $this->mUser=  get_user();
 		// basic URL params
 		$this->mCtrler = $this->router->fetch_class();
 		$this->mAction = $this->router->fetch_method();

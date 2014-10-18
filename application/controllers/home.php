@@ -19,11 +19,13 @@ public $profile_save = array();
                  $val = &$value;
               set_table($val);
              $this->load->model('user_model',$val);
+             if ($val=="user_general"){
               $this->profile_save=array_merge($this->profile_save,$this->$val->get_one(
                       array(
 				'id'		=> $users['id'],
 				'active'	=> 1
 			)));
+             }
         }
         }
                  

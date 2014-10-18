@@ -9,7 +9,10 @@ $(document).on('hover', '#datemask', function(){
   //Datemask dd/mm/yyyy
  $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
  });
- 
+$(document).on('hover', '#datemask2', function(){  
+  //Datemask dd/mm/yyyy
+ $("#datemask2").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+ }); 
  $(document).on('hover', '#duration', function(){  
      $('.selectMonths:first input')
                 .rangePicker({ minDate:[1,1980], maxDate:[10,2014], RTL:true })
@@ -94,18 +97,50 @@ $(document).on('hover', '#datemask', function(){
   });
  });
  
-  $(document).on('click', '#edu_save', function(e){  
+  $(document).on('click', '#edu_btn', function(){ 
+      document.getElementById("saveForm").reset();
+  $('#edu_save').show();
+ });
+  $(document).on('click', '#edu_btn_cancel', function(e){ 
+      e.preventDefault();
+  $('#edu_save').hide();
+ });
+   $(document).on('click', '#exp_btn', function(){ 
+      document.getElementById("saveForm2").reset();
+  $('#exp_save').show();
+ });
+  $(document).on('click', '#exp_btn_cancel', function(e){ 
+      e.preventDefault();
+  $('#exp_save').hide();
+ });
+  $(document).on('click', '#save_ed', function(e){  
   e.preventDefault();
-  var base_url = window.location.origin;
+ var base_url = window.location.origin;
   $.ajax({
     url:base_url+"/Thiran/profile/education",
     type:"post",
-    data: $('#save_2').serialize(),
+    data: $('#saveForm').serialize(),
+    dataType: "json",
     success: function(result){
-        $('#msg2').html('<span class="alert-success">info saved!</span>');
-        setTimeout(function() {
-  $("#msg2").fadeOut().empty();
-}, 5000);
+       $('#new_edu').append('<time datetime="" class="cbp_tmtime"><span>'+result.degree+'-'+result.specialization+'</span><span>'+result.duration+'</span></time><i class="cbp_tmicon rounded-x hidden-xs"></i><div class="cbp_tmlabel"><p>'+result.college+'</p></div>');
+    document.getElementById("saveForm").reset();
+        $('#edu_save').hide();
+    }
+  });
+ });
+ 
+   $(document).on('click', '#save_exp', function(e){  
+  e.preventDefault();
+ var base_url = window.location.origin;
+  $.ajax({
+    url:base_url+"/Thiran/profile/experience",
+    type:"post",
+    data: $('#saveForm2').serialize(),
+    dataType: "json",
+    success: function(result){
+       $('#new_exp').append('<time datetime="" class="cbp_tmtime"><span>'+result.organization+'-'+result.role+'</span><span>'+result.join_date+' to '+result.end_date+'</span></time><i class="cbp_tmicon rounded-x hidden-xs"></i><div class="cbp_tmlabel"><p>'+result.us_experience+'</p></div>');
+    document.getElementById("saveForm2").reset();
+        $('#exp_save').hide();
     }
   });
  });

@@ -43,7 +43,13 @@ function login_user($user)
 function get_user()
 {
 	$CI =& get_instance();
-	return $CI->session->userdata('thiran_user');
+	 $user=$CI->session->userdata('thiran_user');
+         $CI->load->model('default_model','user');
+         $user_data = $CI->user->get_one(array(
+				'id'		=> $user['id'],
+				'active'	=> 1
+			));
+         return $user_data;
 }
 
 // Partially update user data in current session

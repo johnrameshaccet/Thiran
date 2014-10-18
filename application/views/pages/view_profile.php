@@ -64,16 +64,16 @@
   </div>
                                 </div>
                                 <div id="user" class="col-md-7">
-                                    <a href="#" id="enable"><i class="fa fa-cog pull-right"></i></a>
-                                    <h2><a id="fname" href="#" data-type="text" data-placement="top" data-url="profile/user_update" data-title="Enter first_name"><?php echo ucfirst($user['first_name']); ?></a>&nbsp;<a href="#" id="lname" data-type="text" data-placement="top" data-title="Enter last_name"><?php echo ucfirst($user['last_name']); ?></a></h2>
+                                    <button id="enable" class="btn btn-xs btn-primary btn-flat pull-right" type="button">edit</button>
+                                    <h2><a id="fname" data-type="text" data-placement="top" data-url="profile/user_update" data-title="Enter first_name"><?php echo ucfirst($user['first_name']); ?></a>&nbsp;<a id="lname" data-type="text" data-placement="top" data-title="Enter last_name"><?php echo ucfirst($user['last_name']); ?></a></h2>
                                     <span><strong>Job:</strong> Web Developer</span>
                                     <span><strong>Position:</strong> Web Designer</span>
                                     <hr>
-                                    <i class="fa fa-calendar"></i>&nbsp;<a href="#" data-title="Select Date of birth" data-name="dob" data-pk="<?php echo $user['id']; ?>" data-template="D / MMM / YYYY" data-viewformat="DD/MM/YYYY" data-format="DD-MM-YYYY" data-value="<?php if(!empty($profile)){ echo $profile['dob'];} ?>" data-type="combodate" id="dob" class="editable editable-click"><?php if(!empty($profile)){ echo $profile['dob'];} ?></a> <br>
-                                    <i class="fa fa-map-marker"></i>&nbsp; <a href="#" id="address" data-type="textarea" data-name="address" data-pk="<?php echo $user['id']; ?>" data-placement="top" data-title="Enter address"><?php if(!empty($profile)){ echo $profile['address'];} ?></a> <br>
-                                    &nbsp; &nbsp; <a href="#" id="city" data-type="select2" data-pk="<?php echo $user['id']; ?>" data-value="<?php if(!empty($profile)){ echo $profile['city'];} ?>" data-title="Select city"> <?php if(!empty($profile)){ echo $profile['city'];} ?></a><br>
-                                    &nbsp; &nbsp; <a href="#" id="state" data-type="select2" data-pk="<?php echo $user['id']; ?>" data-value="<?php if(!empty($profile)){ echo $profile['state'];} ?>" data-title="Select state"> <?php if(!empty($profile)){ echo $profile['state'];} ?></a><br>
-                                    &nbsp; &nbsp; <a id="pincode" data-type="text" href="#" data-placement="top" data-name="pincode" data-pk="<?php echo $user['id']; ?>" data-title="Enter pincode"><?php if(!empty($profile)){ echo $profile['pincode'];} ?></a><br><br>
+                                    <i class="fa fa-calendar"></i>&nbsp;<a data-title="Select Date of birth" data-name="dob" data-pk="<?php echo $user['id']; ?>" data-template="D / MMM / YYYY" data-viewformat="DD/MM/YYYY" data-format="DD-MM-YYYY" data-value="<?php if(!empty($profile)){ echo $profile['dob'];} ?>" data-type="combodate" id="dob" class="editable editable-click"><?php if(!empty($profile)){ echo $profile['dob'];} ?></a> <br>
+                                    <i class="fa fa-map-marker"></i>&nbsp; <a id="address" data-type="textarea" data-name="address" data-pk="<?php echo $user['id']; ?>" data-placement="top" data-title="Enter address"><?php if(!empty($profile)){ echo $profile['address'];} ?></a> <br>
+                                    &nbsp; &nbsp; <a id="city" data-type="select2" data-pk="<?php echo $user['id']; ?>" data-value="<?php if(!empty($profile)){ echo $profile['city'];} ?>" data-title="Select city"> <?php if(!empty($profile)){ echo $profile['city'];} ?></a><br>
+                                    &nbsp; &nbsp; <a id="state" data-type="select2" data-pk="<?php echo $user['id']; ?>" data-value="<?php if(!empty($profile)){ echo $profile['state'];} ?>" data-title="Select state"> <?php if(!empty($profile)){ echo $profile['state'];} ?></a><br>
+                                    &nbsp; &nbsp; <a id="pincode" data-type="text" data-placement="top" data-name="pincode" data-pk="<?php echo $user['id']; ?>" data-title="Enter pincode"><?php if(!empty($profile)){ echo $profile['pincode'];} ?></a><br><br>
                                     
                                     <?php echo app_btn('','followers<br>67', $url = 'followers'); ?>
 			            <?php echo app_btn('','starred<br>37', $url = 'starred'); ?>
@@ -155,34 +155,106 @@
                         <div class="panel panel-profile">
                             <div class="panel-heading overflow-h">
                                 <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Experience</h2>
-                                <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                <button id="exp_enable" class="btn btn-xs btn-primary btn-flat pull-right" type="button">edit</button>
                             </div>
                             <div class="panel-body margin-bottom-40">
+                                  <button id="exp_btn" type="button" class="btn-u"><i class="fa fa-plus"></i> Add new</button>
+                                <div id="exp_save" style="display: none;padding-top: 20px;padding-bottom: 20px;font-family:'Raleway'">
+                                   <form id="saveForm2" name="saveForm2" role="form" method="post">
+                              <fieldset>
+                                  <legend class="text-light-blue">Experience Info  <span id="msg2"></span></legend>
+                                  <div class="row">
+                                <section class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="organization">Organization</label><input type="text" class="form-control" name="organization">
+                                </div>
+                                </section>
+                               <section class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="role">Role</label><input type="text" class="form-control" name="role">
+                                </div>
+                                </section>
+                               <section class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="us_exp">User Experience</label><textarea class="form-control" name="us_experience"></textarea>
+                                </div>
+                                </section>
+                                  </div>
+                                  <div class="row">
+                                       <section class="col-xs-4">
+                                <div class="form-group">
+                                        <label for="join_date">Join Date</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input class="form-control" name="join_date" id='datemask' data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
+                                        </div>
+                                         </div>
+           
+                                </section>
+                                       <section class="col-xs-4">
+                                <div class="form-group">
+                                     <div class="form-group">
+                                        <label for="end_date">End Date</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input class="form-control" name="end_date" id='datemask2' data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
+                                        </div>
+                                         </div>
+                                </div>
+                                </section>
+                                       <section class="col-xs-4">
+                               <div class="form-group">
+                                            <div class="checkbox">
+                                                <label for="cur_emp">
+                                                    <input name="is_current_role" value="1" type="checkbox">
+                                                    Current Employee
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input name="is_entreprenur" value="1" type="checkbox">
+                                                    Entreprenur
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input name="is_ngo" value="1" type="checkbox">
+                                                    NGO
+                                                </label>
+                                            </div>
+                                        </div>
+                                </section>
+                                  </div>
+                              </fieldset>
+<button type="submit" name="save_exp" id="save_exp" class="btn btn-primary">Save</button> &nbsp;  <button id="exp_btn_cancel" class="btn btn-default">Cancel</button>
+                                   
+                                  </form>
+                                </div>
                                 <ul class="timeline-v2 timeline-me">
+                                    <li id="new_exp" style=" padding-bottom: 20px"></li>
+                                    <?php if(!empty($profile['exp'])) {
+                                        
+                                       foreach ($profile['exp'] as $data)
+                                       {
+                                        ?>
                                     <li>
-                                        <time datetime="" class="cbp_tmtime"><span>Mobile Design</span> <span>2012 - Current</span></time>
+                                        <time datetime="" class="cbp_tmtime"><span><?php echo $data['organization'] ?>-<?php echo $data['role'] ?></span> <span><?php echo $data['join_date'] ?>&nbsp; to &nbsp;<?php echo $data['end_date'] ?></span></time>
                                         <i class="cbp_tmicon rounded-x hidden-xs"></i>
                                         <div class="cbp_tmlabel">
-                                            <h2>BFC NYC Partners</h2>
-                                            <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p> 
+                                            <h2> University</h2>
+                                            <p><?php echo $data['us_experience'] ?></p> 
                                         </div>
                                     </li>
-                                    <li>
-                                        <time datetime="" class="cbp_tmtime"><span>Web Designer</span> <span>2007 - 2012</span></time>
-                                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                                        <div class="cbp_tmlabel">
-                                        <h2>Freelance</h2>
-                                            <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce.</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <time datetime="" class="cbp_tmtime"><span>Photodesigner</span> <span>2003 - 2007</span></time>
-                                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                                        <div class="cbp_tmlabel">
-                                        <h2>Toren Condo</h2>
-                                            <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot.</p>
-                                        </div>
-                                    </li>
+                                    <?php
+                                       }
+                                    
+                                       } ?>
                                 </ul>
                             </div>    
                         </div>
@@ -192,34 +264,91 @@
                         <div class="panel panel-profile">
                             <div class="panel-heading overflow-h">
                                 <h2 class="panel-title heading-sm pull-left"><i class="fa fa-book"></i> Education</h2>
-                                <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                <button id="edu_enable" class="btn btn-xs btn-primary btn-flat pull-right" type="button">edit</button>
                             </div>
                             <div class="panel-body">
+                                <button id="edu_btn" type="button" class="btn-u"><i class="fa fa-plus"></i> Add new</button>
+                                <div id="edu_save" style="display: none;padding-top: 20px;padding-bottom: 20px;font-family:'Raleway'">
+                                   <form id="saveForm" name="saveForm" role="form" method="post">
+  <fieldset>
+      <legend class="text-light-blue">Educational Info  <span id="msg2"></span></legend>
+                                       <div class="row">
+<section class="col-xs-4">
+                                        <div class="form-group">
+                                            <label for="degree">Degree</label><input type="text" class="form-control" name="degree" id="degree">
+                                        </div>
+</section>
+            <section class="col-xs-4">                            <div class="form-group">
+                                            <label>Course type</label>
+                                            <select name="type_degree" id="type_degree" class="form-control">
+                                               <option value="full-time">full-time</option>
+                                               <option value="part-time">part-time</option>
+                                            </select>
+                                        </div>
+            </section>
+                <section class="col-xs-4"> 
+                                        <div class="form-group">
+                                            <label for="college">College</label><input type="text" class="form-control" name="college" id="college">
+                                        </div>
+                </section>       
+                                       </div>
+                                             <div class="row">
+<section class="col-xs-4">
+                                         <div class="form-group">
+                                             <label for="duration">Duration Period</label> <div class='selectMonths'>
+                                                 <input type='text' id="duration" name="duration" placeholder='choose duration' readonly /><i class="caret"></i>
+                                         </div>
+                                         </div>
+</section>
+                                                 <section class="col-xs-4">
+                                        <div class="form-group">
+                                            <label for="uregno">University Regno.</label><input type="text" class="form-control" name="university_regno">
+                                        </div>
+                                                 </section>
+                                                 <section class="col-xs-4">
+                                        <div class="form-group">
+                                            <label for="specialization">Specialization</label><input type="text" class="form-control" name="specialization">
+                                        </div>
+                                                 </section>
+                                             </div>
+                                                   <div class="row">
+<section class="col-xs-4">
+                                         <div class="form-group">
+                                            <label for="cgpa">CGPA</label><input type="text" class="form-control" name="cgpa">
+                                        </div>
+</section>
+                            <section class="col-xs-4">           <div class='form-group'>
+                                            <label for="current_stud">Current Pursuing</label>
+                                            <div class="input-group"> <input type="radio" name="is_current_stud" value="1">Yes</input>
+                                               <input type="radio" name="is_current_stud" value="0">No</input></div>
+                                        </div>
+                            </section>
+                                                   </div>                   
+                                </fieldset>
+                                   <button type="submit" name="save_ed" id="save_ed" class="btn btn-primary">Save</button> &nbsp;  <button id="edu_btn_cancel" class="btn btn-default">Cancel</button>
+                                    
+                                </form>
+                                  </div>
+                                
                                 <ul class="timeline-v2 timeline-me">
+                                    <li id="new_edu" style=" padding-bottom: 20px"></li>
+                                    <?php if(!empty($profile['edu'])) {
+                                        
+                                       foreach ($profile['edu'] as $data)
+                                       {
+                                        ?>
                                     <li>
-                                        <time datetime="" class="cbp_tmtime"><span>Bachelor of IT</span> <span>2003 - 2000</span></time>
+                                        <time datetime="" class="cbp_tmtime"><span><?php echo $data['degree'] ?>-<?php echo $data['specialization'] ?></span> <span><?php echo $data['duration'] ?></span></time>
                                         <i class="cbp_tmicon rounded-x hidden-xs"></i>
                                         <div class="cbp_tmlabel">
-                                            <h2>Harvard University</h2>
-                                            <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p> 
+                                            <h2> University</h2>
+                                            <p><?php echo $data['college'] ?></p> 
                                         </div>
                                     </li>
-                                    <li>
-                                        <time datetime="" class="cbp_tmtime"><span>Web Design</span> <span>1997 - 2000</span></time>
-                                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                                        <div class="cbp_tmlabel">
-                                        <h2>Imperial College London</h2>
-                                            <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce.</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <time datetime="" class="cbp_tmtime"><span>High School</span> <span>1988 - 1997</span></time>
-                                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                                        <div class="cbp_tmlabel">
-                                        <h2>Chicago High School</h2>
-                                            <p>Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot.</p>
-                                        </div>
-                                    </li>
+                                    <?php
+                                       }
+                                    
+                                       } ?>
                                 </ul>
                             </div>    
                         </div>
