@@ -33,16 +33,18 @@ function emailvalid()
     if(emal!=""){
 var emailExp =/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 if(!emal.match(emailExp))
-{document.signup_t.email.focus();ealt.innerHTML="<font color='red'> Invalid Email id </font>";
+{
+    ealt.innerHTML="<font color='red'> Invalid Email id </font>";
+    document.signup_t.email.focus();
 return false; }
 else{
 ealt.innerHTML="";
-document.getElementById('email').focus();
 return true;}
 } 
 else if(emal.length==0)
 {
-    ealt.innerHTML="<font color='red'> Invalid Email id</font>";
+    ealt.innerHTML="<font color='red'>Enter Email id</font>";
+    document.signup_t.email.focus();
     return false;
 }
 }
